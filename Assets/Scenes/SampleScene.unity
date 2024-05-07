@@ -855,7 +855,7 @@ GameObject:
   - component: {fileID: 885900429}
   - component: {fileID: 885900428}
   m_Layer: 8
-  m_Name: Meteor (2)
+  m_Name: Meteor3
   m_TagString: Meteor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2089,7 +2089,7 @@ GameObject:
   - component: {fileID: 2019632669}
   - component: {fileID: 2019632668}
   m_Layer: 8
-  m_Name: Meteor (1)
+  m_Name: Meteor2
   m_TagString: Meteor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2300,7 +2300,7 @@ GameObject:
   - component: {fileID: 2123069107}
   - component: {fileID: 2123069108}
   m_Layer: 8
-  m_Name: Meteor
+  m_Name: Meteor1
   m_TagString: Meteor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
