@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using UnityEditor.Profiling.Memory.Experimental;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using UnityEngine.UI;
+using TMPro;
+
 
 public class DeliveryPoint : MonoBehaviour
 {
@@ -11,6 +14,8 @@ public class DeliveryPoint : MonoBehaviour
     private bool _isInside = false;
     private float _timeInside = 0;
     private float _requiredTime = 3f;
+    public TextMeshProUGUI timeInsideText;
+
     void Start()
     {
         transform.position = new Vector3(Random.Range(-7.3f, 7.5f), Random.Range(-4f, 2f), 0);
@@ -24,6 +29,7 @@ public class DeliveryPoint : MonoBehaviour
         {    
             _isInside = true;
             _timeInside += Time.deltaTime;
+            timeInsideText.text = _timeInside.ToString("F2");;
             if (_timeInside >= _requiredTime && _isInside)
             {
                 Debug.Log(++_score);
@@ -37,6 +43,7 @@ public class DeliveryPoint : MonoBehaviour
     {
         _isInside = false;
         _timeInside = 0;
+        timeInsideText.text = ""; 
     }
 
     IEnumerator Reposition()
