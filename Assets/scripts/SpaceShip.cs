@@ -5,16 +5,18 @@ using UnityEngine;
 
 public class SpaceShip : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Rigidbody2D _rb;
+    private void Start()
     {
-        
+        _rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        Vector2 v = _rb.velocity;
+        var angle = Mathf.Atan2(v.x, v.y) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, -angle));
+
     }
 
     private void OnCollisionEnter2D(Collision2D other)
