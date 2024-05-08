@@ -9,9 +9,10 @@ public class Anchor : MonoBehaviour
 
     void Update()
     {
+        if (_ship == null)
+        { return; }
 
         transform.position = _ship.transform.position;
         transform.rotation = _ship.transform.rotation;
-
     }
 }
