@@ -1703,7 +1703,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &780893351
 Transform:
   m_ObjectHideFlags: 0
@@ -2492,7 +2492,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1024564168}
   - component: {fileID: 1024564167}
-  - component: {fileID: 1024564171}
+  - component: {fileID: 1024564174}
   - component: {fileID: 1024564169}
   - component: {fileID: 1024564172}
   - component: {fileID: 1024564173}
@@ -2597,18 +2597,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1024564171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1024564166}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42a987221f3634c5f91a77760e739aad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!233 &1024564172
 HingeJoint2D:
   m_ObjectHideFlags: 0
@@ -2669,6 +2657,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.00000044703484}
   m_Size: {x: 1.0000002, y: 2.0000005}
   m_Direction: 0
+--- !u!114 &1024564174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024564166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8abe77173f4575428be3e5fb3ef7719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1073927970
 GameObject:
   m_ObjectHideFlags: 0
@@ -4145,7 +4145,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.5
   m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -4172,10 +4172,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c46ab12f00df9470f8ac0744edd1ca06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftThrust: {x: -15, y: 0, z: 0}
-  rightThrust: {x: 15, y: 0, z: 0}
-  downThrust: {x: 0, y: -15, z: 0}
-  upThrust: {x: 0, y: 15, z: 0}
+  leftThrust: {x: -20, y: 0, z: 0}
+  rightThrust: {x: 20, y: 0, z: 0}
+  downThrust: {x: 0, y: -20, z: 0}
+  upThrust: {x: 0, y: 20, z: 0}
+  _brakeFactor: 2
 --- !u!212 &1870091145
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ public class Lefthand : MonoBehaviour
     public Vector3 downThrust;
     public Vector3 upThrust;
     private Rigidbody2D _rb;
+    public float _brakeFactor;
 
     private void Start()
     {
@@ -20,14 +21,13 @@ public class Lefthand : MonoBehaviour
 
     void FixedUpdate () {
 
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            _rb.constraints = RigidbodyConstraints2D.FreezeAll;
-           
-        }
-        else
-        {
-            _rb.constraints = RigidbodyConstraints2D.None;
+       
+        if (Input.GetKey(KeyCode.Space)) {
+            _rb.AddForce(-_brakeFactor * _rb.velocity);
+       
+            // if (_rb.velocity.sqrMagnitude < 0.1) {
+            //     _rb.Sleep();
+            // }
         }
         
     }
@@ -40,19 +40,19 @@ public class Lefthand : MonoBehaviour
     private void Controls()
     {
         Vector3 force = Vector3.zero;
-        if(Input.GetKey(KeyCode.A))
+        if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             force+=leftThrust;
         }
-        if(Input.GetKey(KeyCode.D))
+        if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             force+=rightThrust;
         }
-        if(Input.GetKey(KeyCode.W))
+        if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             force+=upThrust;
         }
-        if(Input.GetKey(KeyCode.S))
+        if(Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             force+=downThrust;
         }
