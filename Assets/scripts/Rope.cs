@@ -35,7 +35,6 @@ public class Rope : MonoBehaviour
             newSeg.transform.position = transform.position;
             HingeJoint2D hj = newSeg.GetComponent<HingeJoint2D>();
             hj.connectedBody = prevBod;
-
             prevBod = newSeg.GetComponent<Rigidbody2D>();
             if (i == 0)
             {
@@ -43,6 +42,7 @@ public class Rope : MonoBehaviour
             }
             else if (i == _initalNumLinks - 1)
             {
+                //newSeg.GetComponent<SpriteRenderer>().color = new Color(0, 1,0.8f);
                 _lastSegment = newSeg.GetComponent<Rigidbody2D>();
                 ConnectAstro();
             }
@@ -51,13 +51,16 @@ public class Rope : MonoBehaviour
 
     private void ConnectAstro()
     {
+        //_lastSegment.GetComponent<HingeJoint2D>().
+        float spriteBottom = _lastSegment.GetComponent<SpriteRenderer>().localBounds.size.y;
         _astronaut.GetComponent<HingeJoint2D>().connectedBody = _lastSegment;
+        _astronaut.GetComponent<HingeJoint2D>().connectedAnchor = new Vector2(0, -spriteBottom);
     }
 
     public void AddLink()
     {
         if(_maxLinks == _currLinks){return;}
-
+        
         _currLinks++;
         GameObject newLink = Instantiate(_segment);
         newLink.transform.parent = transform;

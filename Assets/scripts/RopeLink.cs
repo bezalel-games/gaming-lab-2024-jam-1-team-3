@@ -12,18 +12,6 @@ public class RopeLink : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // _connectedAbove = GetComponent<HingeJoint2D>().connectedBody.gameObject;
-        // RopeLink aboveSegment = _connectedAbove.GetComponent<RopeLink>();
-        // if (aboveSegment != null)
-        // {
-        //     aboveSegment._connectedBelow = gameObject;
-        //     float spriteBottom = _connectedAbove.GetComponent<SpriteRenderer>().localBounds.size.y;
-        //     GetComponent<HingeJoint2D>().connectedAnchor = new Vector2(0, -spriteBottom);
-        // }
-        // else
-        // {
-        //     GetComponent<HingeJoint2D>().connectedAnchor = new Vector2(0, 0);
-        // }
         ResetAnchor();
     }
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,19 +11,30 @@ public class Lefthand : MonoBehaviour
     public Vector3 rightThrust ;
     public Vector3 downThrust;
     public Vector3 upThrust;
+    private Rigidbody2D _rb;
+
+    private void Start()
+    {
+        _rb = GetComponent<Rigidbody2D>();
+    }
+
     void FixedUpdate () {
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            _rb.constraints = RigidbodyConstraints2D.FreezeAll;
            
         }
         else
         {
-            rb.constraints = RigidbodyConstraints2D.None;
-            Controls();
+            _rb.constraints = RigidbodyConstraints2D.None;
         }
+        
+    }
+
+    private void Update()
+    {
+        Controls();
     }
 
     private void Controls()
