@@ -6,9 +6,9 @@ public class Astronaut : MonoBehaviour
 {
     
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (other.transform.CompareTag("Meteor"))
+        if (collider.transform.CompareTag("Meteor"))
         {
             Debug.Log("YOU LOOSE!");
             Debug.Log("EXPLOSION!");
