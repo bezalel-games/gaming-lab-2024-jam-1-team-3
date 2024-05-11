@@ -8,7 +8,6 @@ public class Meteor : MonoBehaviour
     public float low,high;
 
     private Rigidbody2D _rb;
-    // Start is called before the first frame update
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -16,7 +15,6 @@ public class Meteor : MonoBehaviour
         //_rb.SetRotation(Quaternion.RotateTowards());
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (transform.position.y < -7)

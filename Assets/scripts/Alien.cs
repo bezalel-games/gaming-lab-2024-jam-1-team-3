@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,15 +17,25 @@ public class Alien : MonoBehaviour
         // thoughtBubble.SetActive(false); // Initially hide the thought bubble
     }
 
+    private void OnEnable()
+    {
+        RequestPizza();
+    }
+
+    private void OnDisable()
+    {
+        HideThoughtBubble();
+    }
+
     public void RequestPizza()
     {
+        thoughtBubble.SetActive(true);
         StartCoroutine(ChangeBubbleColorOverTime());
     }
 
     private IEnumerator ChangeBubbleColorOverTime()
     {
         // Change color over time
-        // thoughtBubble.SetActive(true); // Show the thought bubble
         // Debug.Log("Thought bubble active state after hiding: " + thoughtBubble.activeSelf);  // This should log 'false'.
         bubbleRenderer.color = Color.green; // Start with green
         yield return new WaitForSeconds(3); // Wait for 2 seconds

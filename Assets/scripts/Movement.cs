@@ -6,28 +6,30 @@ using UnityEngine;
 public class Lefthand : MonoBehaviour
 {
     // Start is called before the first frame update
-    
-    public Vector3 leftThrust ;
-    public Vector3 rightThrust ;
-    public Vector3 downThrust;
-    public Vector3 upThrust;
+
+    [SerializeField] private float _thrustForce;
+    private Vector3 leftThrust ;
+    private Vector3 rightThrust ;
+    private Vector3 downThrust;
+    private Vector3 upThrust;
     private Rigidbody2D _rb;
     public float _brakeFactor;
 
     private void Start()
     {
+
+        leftThrust = new Vector3(-_thrustForce, 0, 0);
+        rightThrust = new Vector3(_thrustForce, 0, 0);
+        downThrust = new Vector3(0, -_thrustForce,  0);
+        upThrust = new Vector3(0, _thrustForce,  0);
+
+
         _rb = GetComponent<Rigidbody2D>();
     }
 
     void FixedUpdate () {
-
-       
         if (Input.GetKey(KeyCode.Space)) {
             _rb.AddForce(-_brakeFactor * _rb.velocity);
-       
-            // if (_rb.velocity.sqrMagnitude < 0.1) {
-            //     _rb.Sleep();
-            // }
         }
         
     }
