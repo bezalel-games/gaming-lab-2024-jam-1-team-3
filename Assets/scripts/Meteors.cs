@@ -15,8 +15,14 @@ public class Meteors : MonoBehaviour
     private Vector2 endPoint;
     public float speed = 5.0f;
 
-    private float minDelay = 3;
-    private float maxDelay = 8;
+    private float minDelay = 4;
+    private float maxDelay = 12;
+    private float minScale = 0.5f;
+    private float maxScale = 1.5f;
+    private float rotationSpeed;
+
+    private float minRotationSpeed = -90.0f;  // Minimum rotation speed (degrees per second)
+    private float maxRotationSpeed = 90.0f;
 
 
     public float startXMin;
@@ -34,6 +40,12 @@ public class Meteors : MonoBehaviour
         StartCoroutine(InitializeMeteorWithDelay());
     }
 
+    void Update()
+    {
+        // Apply continuous rotation
+        transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
+    }
+
     IEnumerator InitializeMeteorWithDelay()
     {
         while (true)
@@ -46,6 +58,10 @@ public class Meteors : MonoBehaviour
 
     void SetMeteorPath()
     {
+        float randomScale = Random.Range(minScale, maxScale);
+        transform.localScale = new Vector3(randomScale, randomScale, randomScale);
+        rotationSpeed = Random.Range(minRotationSpeed, maxRotationSpeed);
+
         switch (movementDirection)
         {
             case MovementDirection.TopToBottom:
