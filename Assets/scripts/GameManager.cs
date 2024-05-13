@@ -42,5 +42,18 @@ public class GameManager : MonoBehaviour
     {
         _alien.RequestPizza();
     }
+
+    public void Pause()
+    {
+        Time.timeScale = 0f; // Stop time to pause the game
+        _alien.enabled = false;
+    }
+
+    public void Resume()
+    {
+        Time.timeScale = 1f; // Resume time to unpause the game
+        _alien.enabled = true;
+    }
+    
 }
 
