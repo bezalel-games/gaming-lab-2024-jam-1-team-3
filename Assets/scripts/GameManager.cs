@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     //[SerializeField] private GameObject _pauseTextGO;
     private TextMeshProUGUI _pauseText;
     [SerializeField] private GameObject _unpauseTextGO;
+    public GameObject _rope;
     private bool _isPaused;
     
 
@@ -41,7 +42,7 @@ public class GameManager : MonoBehaviour
         }
         _pauseText = _pause.GetComponent<TextMeshProUGUI>();
         _timerText = _timer.GetComponent<TextMeshProUGUI>();
-        _quotaText = _quotaText.GetComponent<TextMeshProUGUI>();
+        _quotaText = _quota.GetComponent<TextMeshProUGUI>();
         //_startText = textobject.GetComponent<TextMeshProUGUI>();
         _startText = _astronaut.transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
     }
