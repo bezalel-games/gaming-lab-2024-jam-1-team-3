@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7485750758746010396}
   - component: {fileID: 3076038828985962439}
   - component: {fileID: 2166937652056525858}
+  - component: {fileID: -9162899909743634503}
   m_Layer: 8
   m_Name: Meteor
   m_TagString: Meteor
@@ -47,6 +48,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf97696554db54cefbd0ff2e0c20388a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementDirection: 0
+  speed: 5
+  startXMin: 0
+  startXMax: 0
+  startYMin: 0
+  startYMax: 0
+  endXMin: 0
+  endXMax: 0
+  endYMin: 0
+  endYMax: 0
 --- !u!212 &7485750758746010396
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -88,8 +99,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.3679245, g: 0.01561943, b: 0.34474662, a: 1}
+  m_Sprite: {fileID: 1633806041, guid: 8e58a228873064438bf37a1be15523e6, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -161,3 +172,24 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!95 &-9162899909743634503
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056047011198633609}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 996ffd8f9ccc64bc298d1aca50ea00b6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
