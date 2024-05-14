@@ -18,13 +18,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _meteors;
     [SerializeField] private float _startTime = 6;
     [SerializeField] private TextMeshProUGUI _startText;
-    public GameObject textobject;
     [SerializeField] private GameObject _timer;
     private TextMeshProUGUI _timerText;
     [SerializeField] private GameObject _quota;
     private TextMeshProUGUI _quotaText;
     [SerializeField] private GameObject _pause;
+    //[SerializeField] private GameObject _pauseTextGO;
     private TextMeshProUGUI _pauseText;
+    [SerializeField] private GameObject _unpauseTextGO;
     private bool _isPaused;
     
 
@@ -38,9 +39,9 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("Too many game instances");
         }
-        _timerText = _pause.GetComponent<TextMeshProUGUI>();
+        _pauseText = _pause.GetComponent<TextMeshProUGUI>();
         _timerText = _timer.GetComponent<TextMeshProUGUI>();
-        _quotaText = _timer.GetComponent<TextMeshProUGUI>();
+        _quotaText = _quotaText.GetComponent<TextMeshProUGUI>();
         //_startText = textobject.GetComponent<TextMeshProUGUI>();
         _startText = _astronaut.transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
     }
@@ -62,12 +63,7 @@ public class GameManager : MonoBehaviour
         _astronaut.SetActive(false);
         SpawnLevelStartGame();
     }
-
-    private void Update()
-    {
-        //add esc option
-    }
-
+    
 
     //Taken from this video: https://www.youtube.com/watch?v=jTPOCglHejE&ab_channel=SasquatchBStudios 
     private IEnumerator RollText(float animationTime, string p)
@@ -119,6 +115,7 @@ public class GameManager : MonoBehaviour
         _pauseText.text = "Unpause";
         _alien.enabled = false;
         //add text "Press ;esc; to resume"
+        _unpauseTextGO.SetActive(true);
     }
 
     public void Resume()
@@ -127,8 +124,20 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f; // Resume time to unpause the game
         _alien.enabled = true;
         _pauseText.text = "Pause";
-
+        _unpauseTextGO.SetActive(false);
     }
-    
+
+    public void TogglePause()
+    {
+        if (_isPaused)
+        {
+            Resume();
+        }
+        else
+        {
+            Pause();
+        }
+    }
+
 }
 

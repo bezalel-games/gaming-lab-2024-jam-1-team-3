@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Lefthand : MonoBehaviour
@@ -14,6 +15,8 @@ public class Lefthand : MonoBehaviour
     private Vector3 upThrust;
     private Rigidbody2D _rb;
     public float _brakeFactor;
+    private bool _brakeIsOn = false;
+    private Vector3 _force;
 
     private void Start()
     {
@@ -28,10 +31,12 @@ public class Lefthand : MonoBehaviour
     }
 
     void FixedUpdate () {
-        if (Input.GetKey(KeyCode.Space)) {
+        if (_brakeIsOn)
+        {
             _rb.AddForce(-_brakeFactor * _rb.velocity);
         }
-        
+        _rb.AddForce(_force);
+
     }
 
     private void Update()
@@ -41,23 +46,36 @@ public class Lefthand : MonoBehaviour
 
     private void Controls()
     {
-        Vector3 force = Vector3.zero;
+        _force = Vector3.zero;
         if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            force+=leftThrust;
+            _force+=leftThrust;
         }
         if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            force+=rightThrust;
+            _force+=rightThrust;
         }
         if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
-            force+=upThrust;
+            _force+=upThrust;
         }
         if(Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
-            force+=downThrust;
+            _force+=downThrust;
         }
-        GetComponent<Rigidbody2D>().AddForce(force);
+        if (Input.GetKey(KeyCode.Space))
+        {
+            _brakeIsOn = true;
+        }
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            _brakeIsOn = false;
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            GameManager.Instance.TogglePause();
+        }
     }
 }
