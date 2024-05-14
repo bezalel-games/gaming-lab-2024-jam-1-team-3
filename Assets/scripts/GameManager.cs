@@ -118,6 +118,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f; // Stop time to pause the game
         _pauseText.text = "Unpause";
         _alien.enabled = false;
+        //add text "Press ;esc; to resume"
     }
 
     public void Resume()
