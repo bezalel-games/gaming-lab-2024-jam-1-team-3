@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 
@@ -9,6 +10,10 @@ public class GameManager : MonoBehaviour
     public Alien _alien;
     private float _tip = 0;
     private float _tipGoal = 20;
+    [SerializeField] private GameObject _astronaut;
+    [SerializeField] private GameObject _moons;
+    [SerializeField] private GameObject _meteors;
+    [SerializeField] private float _startTime = 3;
 
     void Awake()
     {
@@ -25,8 +30,19 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Debug.Log("GameManager Start called.");
+
         //TriggerPizzaRequest();
     }
+
+    private IEnumerator StartAnimation() 
+    {
+        RollText(_startTime / 2);
+        yield return new WaitForSeconds(_startTime);
+        _astronaut.SetActive(false);
+        SpawnLevelStartGame();
+    }
+
+    private void RollText(float animationTime) { }
 
     public void AddScore(float tip)
     {
@@ -36,6 +52,12 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("YOU WIN!");
         }
+    }
+
+    private void SpawnLevelStartGame() 
+    {
+        _moons.SetActive(true);
+        _meteors.SetActive(true);
     }
     
     public void TriggerPizzaRequest()
