@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     public Alien _alien;
     private double _tip = 0;
     private float _tipGoal = 20;
+    private float _levelTime = 90; 
+    private float _currentTime;
+    private bool _levelInProgress;
     [SerializeField] private GameObject _astronaut;
     [SerializeField] private GameObject _moons;
     [SerializeField] private GameObject _meteors;
@@ -54,7 +57,33 @@ public class GameManager : MonoBehaviour
         //TriggerPizzaRequest();
         _quotaText.text = 0 + " / " + 0;
         StartCoroutine(StartAnimation());
+        _currentTime = _levelTime;
+        _levelInProgress = true;
+        UpdateTimerUI();
+
         
+    }
+
+    void Update()
+    {
+        if (!_isPaused && _levelInProgress)
+        {
+            _currentTime -= Time.deltaTime;
+            UpdateTimerUI();
+
+            if (_currentTime <= 0)
+            {
+                _currentTime = 0;
+                _levelInProgress = false;
+                Debug.Log("Time's up! YOU LOSE!");
+                
+            }
+        }
+    }
+
+    private void UpdateTimerUI()
+    {
+        _timerText.text = $"Time: {Mathf.FloorToInt(_currentTime / 60):00}:{Mathf.FloorToInt(_currentTime % 60):00}";
     }
 
     private IEnumerator StartAnimation() 
@@ -93,6 +122,7 @@ public class GameManager : MonoBehaviour
         _quotaText.text = _tip + " / " + _tipGoal;
         if (_tip >= _tipGoal)
         {
+            _levelInProgress = false;
             Debug.Log("YOU WIN!");
         }
     }

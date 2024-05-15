@@ -60,7 +60,7 @@ public class Meteors : MonoBehaviour
     {
         float randomScale = Random.Range(minScale, maxScale);
         transform.localScale = new Vector3(randomScale, randomScale, randomScale);
-        rotationSpeed = Random.Range(minRotationSpeed, maxRotationSpeed);
+        // rotationSpeed = Random.Range(minRotationSpeed, maxRotationSpeed);
 
         switch (movementDirection)
         {
