@@ -24,10 +24,11 @@ public class DeliveryPoint : MonoBehaviour
     private bool _inEvent;
     [SerializeField] private float _initialPatience = 9;
     private float _patience;
-    
-    public GameObject _rope;
+    private Rope _rope;
+
     void Start()
     {
+        _rope = GameManager.Instance._rope.GetComponent<Rope>();
         _deliveryTimeIndicator = _deliveryTimeGameObject.GetComponent<Image>();
         StartCoroutine(StartPizzaEvent());
         _patience = _initialPatience;
@@ -38,7 +39,7 @@ public class DeliveryPoint : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            _rope.GetComponent<Rope>().AddLink();
+            _rope.AddLink();
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
