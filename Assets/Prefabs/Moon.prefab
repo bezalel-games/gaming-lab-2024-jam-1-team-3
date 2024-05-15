@@ -75,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.05804968, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 27d338ec8c23df348a3691e5db2a3c5c, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -134,5 +134,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _requiredTime: 2
-  timeInsideText: {fileID: 0}
-  _rope: {fileID: 0}
+  _spawnPoint: {fileID: 0}
+  _xDistance: 0
+  _yDistance: 0
+  _alien: {fileID: 0}
+  _deliveryTimeGameObject: {fileID: 0}
+  _initialPatience: 9
