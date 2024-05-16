@@ -71,11 +71,5 @@ public class Lefthand : MonoBehaviour
         {
             _brakeIsOn = false;
         }
-
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            GameManager.Instance.TogglePause();
-        }
     }
 }

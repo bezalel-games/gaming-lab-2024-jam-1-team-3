@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Input = UnityEngine.Windows.Input;
 
 public class GameManager : MonoBehaviour
@@ -16,7 +17,7 @@ public class GameManager : MonoBehaviour
     private float _levelTime = 90; 
     private float _currentTime;
     private bool _levelInProgress;
-    [SerializeField] private GameObject _astronaut;
+    [SerializeField] private GameObject _astronautStart;
     [SerializeField] private GameObject _moons;
     [SerializeField] private GameObject _meteors;
     [SerializeField] private float _startTime = 6;
@@ -25,10 +26,6 @@ public class GameManager : MonoBehaviour
     private TextMeshProUGUI _timerText;
     [SerializeField] private GameObject _quota;
     private TextMeshProUGUI _quotaText;
-    [SerializeField] private GameObject _pause;
-    //[SerializeField] private GameObject _pauseTextGO;
-    private TextMeshProUGUI _pauseText;
-    [SerializeField] private GameObject _unpauseTextGO;
     public GameObject _rope;
     private bool _isPaused;
     
@@ -43,17 +40,14 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("Too many game instances");
         }
-        _pauseText = _pause.GetComponent<TextMeshProUGUI>();
         _timerText = _timer.GetComponent<TextMeshProUGUI>();
         _quotaText = _quota.GetComponent<TextMeshProUGUI>();
-        //_startText = textobject.GetComponent<TextMeshProUGUI>();
-        _startText = _astronaut.transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        _startText = _astronautStart.transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
     }
     
     void Start()
     {
         Debug.Log("GameManager Start called.");
-        
         //TriggerPizzaRequest();
         _quotaText.text = 0 + " / " + 0;
         StartCoroutine(StartAnimation());
@@ -90,7 +84,8 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(RollText(_startTime/2,_startText.text ));
         yield return new WaitForSeconds(_startTime);
-        _astronaut.SetActive(false);
+        _astronautStart.SetActive(false);
+        yield return new WaitForSeconds(3);
         SpawnLevelStartGame();
     }
     
@@ -126,49 +121,14 @@ public class GameManager : MonoBehaviour
             Debug.Log("YOU WIN!");
         }
     }
-
     private void SpawnLevelStartGame() 
     {
         _moons.SetActive(true);
         _meteors.SetActive(true);
     }
-    
     public void TriggerPizzaRequest()
     {
         _alien.RequestPizza();
     }
-
-    public void Pause()
-    {
-        _isPaused = true;
-        _pauseText.text = "Unpause";
-        Time.timeScale = 0f; // Stop time to pause the game
-        _pauseText.text = "Unpause";
-        _alien.enabled = false;
-        //add text "Press ;esc; to resume"
-        _unpauseTextGO.SetActive(true);
-    }
-
-    public void Resume()
-    {
-        _isPaused = false;
-        Time.timeScale = 1f; // Resume time to unpause the game
-        _alien.enabled = true;
-        _pauseText.text = "Pause";
-        _unpauseTextGO.SetActive(false);
-    }
-
-    public void TogglePause()
-    {
-        if (_isPaused)
-        {
-            Resume();
-        }
-        else
-        {
-            Pause();
-        }
-    }
-
 }
 

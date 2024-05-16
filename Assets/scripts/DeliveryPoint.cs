@@ -66,9 +66,6 @@ public class DeliveryPoint : MonoBehaviour
     {
         _inEvent = true;
         _alien.SetActive(true);
-        //spawn alien
-        //enable timer and collision
-        //inevent = true
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -80,11 +77,8 @@ public class DeliveryPoint : MonoBehaviour
             _deliveryTimeIndicator.fillAmount = _timeInside / _requiredTime;
             if (_timeInside >= _requiredTime && _isInside)
             {
-                //Rope rope = _rope.GetComponent<Rope>();
-                //rope.AddLink(); //add rope extension to game manager
-                //rope.AddLink();
+                
                 PizzeDelivered();
-                //StartCoroutine(Reposition());
                 _isInside = false;
             }
         }

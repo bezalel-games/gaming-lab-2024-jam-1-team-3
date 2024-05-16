@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 
 
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Meteors : MonoBehaviour
 {
@@ -56,6 +58,7 @@ public class Meteors : MonoBehaviour
         }
     }
 
+   
     void SetMeteorPath()
     {
         float randomScale = Random.Range(minScale, maxScale);
