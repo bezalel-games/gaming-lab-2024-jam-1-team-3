@@ -7,6 +7,6 @@ public class StartButton : MonoBehaviour
 {
     public void OnPlayButtonClick()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("Artists");
     }
 }
