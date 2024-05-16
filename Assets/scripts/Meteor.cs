@@ -17,6 +17,9 @@ public class Meteor : MonoBehaviour
 
     void Update()
     {
+        Vector2 v = _rb.velocity;
+        var angle = Mathf.Atan2(v.x, v.y) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, -angle));
         if (transform.position.y < -7)
         {
             transform.position = new Vector3(Random.Range(point1, point2),7, 0);

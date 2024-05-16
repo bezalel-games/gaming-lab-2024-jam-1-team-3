@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
 
     private void UpdateTimerUI()
     {
-        _timerText.text = $"Time: {Mathf.FloorToInt(_currentTime / 60):00}:{Mathf.FloorToInt(_currentTime % 60):00}";
+        _timerText.text = $"{Mathf.FloorToInt(_currentTime / 60):00}:{Mathf.FloorToInt(_currentTime % 60):00}";
     }
 
     private IEnumerator StartAnimation() 
