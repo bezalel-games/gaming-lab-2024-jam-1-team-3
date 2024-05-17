@@ -3151,15 +3151,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _alien: {fileID: 820014308}
-  _astronaut: {fileID: 1312265460}
+  _astronautStart: {fileID: 1312265460}
   _moons: {fileID: 1504106051}
   _meteors: {fileID: 780893350}
   _startTime: 3
   _startText: {fileID: 187403567}
   _timer: {fileID: 1756913199}
   _quota: {fileID: 1756913199}
-  _pause: {fileID: 1822602976}
-  _unpauseTextGO: {fileID: 1688506528}
   _rope: {fileID: 776233774}
 --- !u!4 &982794419
 Transform:

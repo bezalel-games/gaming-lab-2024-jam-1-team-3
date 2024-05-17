@@ -75,9 +75,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void UpdateTimerUI()
+   private void UpdateTimerUI()
     {
-        _timerText.text = $"{Mathf.FloorToInt(_currentTime / 60):00}:{Mathf.FloorToInt(_currentTime % 60):00}";
+        int minutes = Mathf.FloorToInt(_currentTime / 60);
+        int seconds = Mathf.FloorToInt(_currentTime % 60);
+        string formattedTime = string.Format("{0}:{1:00}", minutes, seconds);
+        _timerText.text = formattedTime;
     }
 
     private IEnumerator StartAnimation() 
