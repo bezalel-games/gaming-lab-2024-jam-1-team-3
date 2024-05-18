@@ -40,19 +40,15 @@ public class Alien : MonoBehaviour
     {
         // Change color over time
         // Debug.Log("Thought bubble active state after hiding: " + thoughtBubble.activeSelf);  // This should log 'false'.
-        //bubbleRenderer.color = Color.green; // Start with green
         bubbleRenderer.sprite = _sprite1;
         yield return new WaitForSeconds(3); // Wait for 2 seconds
         bubbleRenderer.sprite = _sprite2;
-        //bubbleRenderer.color = new Color(1, 0.64f, 0, 1); // Change to orange
         yield return new WaitForSeconds(3); // Wait for another 2 seconds
         bubbleRenderer.sprite = _sprite3;
-        //bubbleRenderer.color = Color.red; // Finally change to red
         yield return new WaitForSeconds(3); // Wait before hiding the bubble
-        HideThoughtBubble();
     }
 
-    private void HideThoughtBubble()
+    public void HideThoughtBubble()
     {
         thoughtBubble.SetActive(false);
     }

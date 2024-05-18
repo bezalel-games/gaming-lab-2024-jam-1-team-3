@@ -3,20 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class TipBar : MonoBehaviour
 {
     private float _currentTip;
-    private float _tipGoal;
-    private float _increment = 0.1f;
+    private float _tipGoal = 1;
+    private float _increment = 0.02f;
     private TextMeshProUGUI _goalText;
     private TextMeshProUGUI _currText;
     private Image _tipBar;
+    private float _previousTip;
 
     public void UpdateTip(float tip)
     {
         _currentTip = tip;
+        _currText.text = string.Format("{0:G}", _currentTip);
         //_currText.text = string.Format(_currentTip);
     }
 
@@ -29,13 +31,18 @@ public class TipBar : MonoBehaviour
 
     void Start()
     {
+        _tipGoal = GameManager.Instance.getTipGoal();
         _goalText.text = "";
-        _currText.text = "";
+        _currText.text = "0";
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        if (_previousTip <= _currentTip)
+        {
+            _tipBar.fillAmount = Mathf.Clamp01(_previousTip/_tipGoal);
+            _previousTip += _increment;
+        }
     }
 }

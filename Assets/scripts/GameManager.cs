@@ -45,7 +45,6 @@ public class GameManager : MonoBehaviour
     
     void Start()
     {
-        Debug.Log("GameManager Start called.");
         _currentTime = _levelTime;
         _levelInProgress = true;
     }
@@ -96,6 +95,11 @@ public class GameManager : MonoBehaviour
         _moons.SetActive(true);
         _meteors.SetActive(true);
     }
- 
+
+    public float getTipGoal()
+    {
+        return _tipGoal;
+    }
+
 }
 

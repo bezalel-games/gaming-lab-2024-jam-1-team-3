@@ -1,12 +1,8 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Profiling.Memory.Experimental;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using UnityEngine.UI;
-using TMPro;
-using Unity.VisualScripting;
 using WaitForSeconds = UnityEngine.WaitForSeconds;
 
 
@@ -19,28 +15,37 @@ public class DeliveryPoint : MonoBehaviour
     [SerializeField] private float _xDistance;
     [SerializeField] private float _yDistance;
     [SerializeField] private GameObject _alien;
+    private Alien _alienClass;
+    
+    //delivery time parameters
     [SerializeField] private GameObject _deliveryTimeGameObject;
     private Image _deliveryTimeIndicator;
     private bool _inEvent;
     [SerializeField] private float _initialPatience = 9;
     private float _patience;
-    private Rope _rope;
+    
+    //Status indicators
+    [SerializeField] private GameObject _particles;
+    private ParticleSystem _ps;
+    [SerializeField] private GameObject _flipOff;
+    
+    
+    private void Awake()
+    {
+        _ps = _particles.GetComponent<ParticleSystem>();
+        _alienClass = _alien.GetComponent<Alien>();
+        _deliveryTimeIndicator = _deliveryTimeGameObject.GetComponent<Image>();
+    }
 
     void Start()
     {
-        _rope = GameManager.Instance._rope.GetComponent<Rope>();
-        _deliveryTimeIndicator = _deliveryTimeGameObject.GetComponent<Image>();
         StartCoroutine(StartPizzaEvent());
         _patience = _initialPatience;
-        //transform.position = new Vector3(Random.Range(-7.3f, 7.5f), Random.Range(-4f, 2f), 0);
         RepositionInRect();
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            _rope.AddLink();
-        }
+        
         if (Input.GetKeyDown(KeyCode.R))
         {
             RepositionInRect();
@@ -48,12 +53,33 @@ public class DeliveryPoint : MonoBehaviour
 
         if (_inEvent)
         {
-            _patience -= Time.deltaTime; //when alien requests pizza his patiance goes down
+            if (!_isInside)
+            {
+                _patience -= Time.deltaTime; //when alien requests pizza his patiance goes down
+            }
             if (_patience < 0)
             {
-                PizzeDelivered();
+                FailedDelivery();
             }
         }
+    }
+    IEnumerator FlipOffSequence()
+    {
+        yield return new WaitForSeconds(0.3f);
+        _flipOff.SetActive(true);
+        yield return new WaitForSeconds(1.2f);
+        _flipOff.SetActive(false);
+        yield return new WaitForSeconds(0.3f);
+        _alien.SetActive(false);
+        StartCoroutine(StartPizzaEvent());
+    }
+
+    private void FailedDelivery()
+    {
+        _patience = _initialPatience;
+        _inEvent = false;
+        _alienClass.HideThoughtBubble();
+        StartCoroutine(FlipOffSequence());
     }
 
     private IEnumerator StartPizzaEvent()
@@ -71,13 +97,14 @@ public class DeliveryPoint : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Pizza") & _inEvent)
-        {    
+        {
             _isInside = true;
             _timeInside += Time.deltaTime;
             _deliveryTimeIndicator.fillAmount = _timeInside / _requiredTime;
+            
             if (_timeInside >= _requiredTime && _isInside)
             {
-                
+                //add pizza delivery animation
                 PizzeDelivered();
                 _isInside = false;
             }
@@ -86,8 +113,9 @@ public class DeliveryPoint : MonoBehaviour
 
     private void PizzeDelivered()
     {
+        _ps.Play();
         _inEvent = false;
-        GameManager.Instance.AddScore(Math.Max(_patience, 0) * 4);
+        GameManager.Instance.AddScore(Math.Max(_patience, 0));
         _patience = _initialPatience;
         _alien.SetActive(false);
         StartCoroutine(StartPizzaEvent());
