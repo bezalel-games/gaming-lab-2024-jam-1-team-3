@@ -1,11 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
-using Input = UnityEngine.Windows.Input;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -26,10 +22,12 @@ public class GameManager : MonoBehaviour
     public GameObject _rope;
     private bool _isPaused;
     private bool _gameStart;
+    public float _customerPatience;
     
 
     void Awake()
     {
+        _customerPatience = 9;
         if (Instance == null)
         {
             Instance = this;
@@ -63,7 +61,6 @@ public class GameManager : MonoBehaviour
                 _currentTime = 0;
                 _levelInProgress = false;
                 Debug.Log("Time's up! YOU LOSE!");
-                
             }
         }
     }
@@ -99,6 +96,11 @@ public class GameManager : MonoBehaviour
     public float getTipGoal()
     {
         return _tipGoal;
+    }
+
+    public float getCostumerPatience()
+    {
+        return _customerPatience;
     }
 
 }

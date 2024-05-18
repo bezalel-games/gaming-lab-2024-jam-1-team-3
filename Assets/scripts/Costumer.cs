@@ -1,19 +1,15 @@
-using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 using UnityEngine.UI;
-using WaitForSeconds = UnityEngine.WaitForSeconds;
+using System;
 
-
-public class DeliveryPoint : MonoBehaviour
+public class Costumer : MonoBehaviour
 {
+    [SerializeField] private GameObject _thoughtBubble;
     private bool _isInside;
     private float _timeInside;
     [SerializeField] private float _requiredTime = 3f;
-    [SerializeField] private GameObject _spawnPoint;
-    [SerializeField] private float _xDistance;
-    [SerializeField] private float _yDistance;
     [SerializeField] private GameObject _alien;
     private Alien _alienClass;
     
@@ -25,34 +21,23 @@ public class DeliveryPoint : MonoBehaviour
     private float _patience;
     
     //Status indicators
-    [SerializeField] private GameObject _particles;
-    private ParticleSystem _ps;
     [SerializeField] private GameObject _flipOff;
     
     
     private void Awake()
     {
-        _ps = _particles.GetComponent<ParticleSystem>();
+        _initialPatience = 9 ;//TODO GameManager.Instance._customerPatience;
         _alienClass = _alien.GetComponent<Alien>();
         _deliveryTimeIndicator = _deliveryTimeGameObject.GetComponent<Image>();
     }
 
     void Start()
     {
-        _initialPatience = GameManager.Instance._customerPatience;
-
-        StartCoroutine(StartPizzaEvent());
+        StartPizzaEvent();
         _patience = _initialPatience;
-        RepositionInRect();
     }
     private void Update()
     {
-        
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            RepositionInRect();
-        }
-
         if (_inEvent)
         {
             if (!_isInside)
@@ -73,7 +58,7 @@ public class DeliveryPoint : MonoBehaviour
         _flipOff.SetActive(false);
         yield return new WaitForSeconds(0.3f);
         _alien.SetActive(false);
-        StartCoroutine(StartPizzaEvent());
+        //add here leave mechanic
     }
 
     private void FailedDelivery()
@@ -86,7 +71,7 @@ public class DeliveryPoint : MonoBehaviour
 
     private IEnumerator StartPizzaEvent()
     {
-        yield return new WaitForSeconds(Random.Range(2,6));
+        yield return new WaitForSeconds(2);
         RequestPizza();
     }
 
@@ -95,7 +80,15 @@ public class DeliveryPoint : MonoBehaviour
         _inEvent = true;
         _alien.SetActive(true);
     }
-
+    private void PizzeDelivered()
+    {
+        //TODO Add here a successful delivery indicator
+        _inEvent = false;
+        GameManager.Instance.AddScore(Math.Max(_patience, 0));
+        _patience = _initialPatience;
+        _alien.SetActive(false);
+        //add leave mechanic here
+    }
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Pizza") & _inEvent)
@@ -106,21 +99,11 @@ public class DeliveryPoint : MonoBehaviour
             
             if (_timeInside >= _requiredTime && _isInside)
             {
-                //add pizza delivery animation
+                //TODO add pizza delivery animation
                 PizzeDelivered();
                 _isInside = false;
             }
         }
-    }
-
-    private void PizzeDelivered()
-    {
-        _ps.Play();
-        _inEvent = false;
-        GameManager.Instance.AddScore(Math.Max(_patience, 0));
-        _patience = _initialPatience;
-        _alien.SetActive(false);
-        StartCoroutine(StartPizzaEvent());
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -128,20 +111,5 @@ public class DeliveryPoint : MonoBehaviour
         _isInside = false;
         _timeInside = 0;
         _deliveryTimeIndicator.fillAmount = _timeInside;
-    }
-
-    private void RepositionInRect()
-    {
-        //Repositions object at random point around spawnPoint
-        float xpos = _spawnPoint.transform.position.x + Random.Range(-_xDistance, _xDistance);
-        float ypos = _spawnPoint.transform.position.y + Random.Range(-_yDistance, _yDistance);
-        transform.position = new Vector3(xpos, ypos, 0);
-    }
-    
-    IEnumerator Reposition()
-    {
-        transform.position = new Vector3(12, 0, 0);
-        yield return new WaitForSeconds(Random.Range(1.5f, 2.5f));
-        transform.position = new Vector3(Random.Range(-7.3f, 7.5f), Random.Range(-4f, 2f), 0);
     }
 }
