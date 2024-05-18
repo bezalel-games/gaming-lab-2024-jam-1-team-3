@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public Alien _alien;
-    private double _tip = 0;
+    private float _tip = 0;
     private float _tipGoal = 20;
     private float _levelTime = 90; 
     private float _currentTime;
@@ -21,8 +21,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float _startTime = 6;
     [SerializeField] private GameObject _timer;
     private TextMeshProUGUI _timerText;
-    [SerializeField] private GameObject _quota;
-    private TextMeshProUGUI _quotaText;
+    [SerializeField] private GameObject _tipGameObject;
+    private TipBar _tipBar;
     public GameObject _rope;
     private bool _isPaused;
     private bool _gameStart;
@@ -38,19 +38,16 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("Too many game instances");
         }
+
+        _tipBar = _tipGameObject.GetComponent<TipBar>();
         _timerText = _timer.GetComponent<TextMeshProUGUI>();
-        _quotaText = _quota.GetComponent<TextMeshProUGUI>();
     }
     
     void Start()
     {
         Debug.Log("GameManager Start called.");
-        //TriggerPizzaRequest();
-        _quotaText.text = 0 + " / " + 0;
-        //StartCoroutine(StartAnimation());
         _currentTime = _levelTime;
         _levelInProgress = true;
-        //UpdateTimerUI();
     }
 
     void Update()
@@ -82,9 +79,10 @@ public class GameManager : MonoBehaviour
 
     public void AddScore(double tip)
     {
-        _tip += Math.Round(tip, 1);
+        _tip += (float)Math.Round(tip, 1);
         Debug.Log(_tip);
-        _quotaText.text = _tip + " / " + _tipGoal;
+        //add tip updater
+        _tipBar.UpdateTip(_tip);
         if (_tip >= _tipGoal)
         {
             _levelInProgress = false;
