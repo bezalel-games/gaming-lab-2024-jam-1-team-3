@@ -4,10 +4,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Lefthand : MonoBehaviour
+public class Movement : MonoBehaviour
 {
-    // Start is called before the first frame update
-
+    public static bool isStunned;
     [SerializeField] private float _thrustForce;
     private Vector3 leftThrust ;
     private Vector3 rightThrust ;
@@ -17,6 +16,9 @@ public class Lefthand : MonoBehaviour
     public float _brakeFactor;
     private bool _brakeIsOn = false;
     private Vector3 _force;
+    private float stunDuration = 2f; // Duration of stun in seconds
+    private float stunTimer = 0f;
+
 
     private void Start()
     {
@@ -31,6 +33,7 @@ public class Lefthand : MonoBehaviour
     }
 
     void FixedUpdate () {
+        if (isStunned) return;
         if (_brakeIsOn)
         {
             _rb.AddForce(-_brakeFactor * _rb.velocity);
@@ -41,6 +44,17 @@ public class Lefthand : MonoBehaviour
 
     private void Update()
     {
+        if (isStunned)
+        {
+            _force = Vector3.zero; // Stop the spaceship
+            _rb.velocity = Vector2.zero;
+            stunTimer -= Time.deltaTime;
+            if (stunTimer <= 0)
+            {
+                isStunned = false;
+            }
+            return;
+        }
         Controls();
     }
 
@@ -71,5 +85,16 @@ public class Lefthand : MonoBehaviour
         {
             _brakeIsOn = false;
         }
+    }
+
+    
+
+    public void StunMovement()
+    {
+        isStunned = true;
+        stunTimer = stunDuration;
+        _force = Vector3.zero; // Stop the spaceship
+        _rb.velocity = Vector2.zero; // Stop all movement
+        
     }
 }

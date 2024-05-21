@@ -24,6 +24,7 @@ public class DeliveryPoint : MonoBehaviour
     private float _initialPatience;
     private float _patience;
     
+    
     //Status indicators
     [SerializeField] private GameObject _particles;
     private ParticleSystem _ps;
@@ -98,7 +99,7 @@ public class DeliveryPoint : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("Pizza") & _inEvent)
+        if (other.CompareTag("Pizza") & _inEvent && !Movement.isStunned)
         {
             _isInside = true;
             _timeInside += Time.deltaTime;

@@ -85,7 +85,10 @@ public class Meteors : MonoBehaviour
                 break;
         }
         transform.position = startPoint;
-        transform.right = endPoint - startPoint;
+        // Adjust the direction the meteor is facing
+        Vector2 direction = endPoint - startPoint;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
 
     IEnumerator MoveMeteor()

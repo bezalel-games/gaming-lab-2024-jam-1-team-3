@@ -133,10 +133,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3fa07225668e47a2b52621eeca9bec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _requiredTime: 2
+  _requiredTime: 10
   _spawnPoint: {fileID: 0}
   _xDistance: 0
   _yDistance: 0
   _alien: {fileID: 0}
   _deliveryTimeGameObject: {fileID: 0}
-  _initialPatience: 9
+  _particles: {fileID: 0}
+  _flipOff: {fileID: 0}
