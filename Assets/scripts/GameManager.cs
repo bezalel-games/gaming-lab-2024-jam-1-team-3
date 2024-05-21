@@ -8,24 +8,34 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public Alien _alien;
-    private float _tip = 0;
-    private float _tipGoal = 20;
-    private float _levelTime = 90; 
+    
+    //tip variables
+    [SerializeField] private float _tipFactor = 1;
+    [SerializeField] private float _tipGoal = 20;
+    private float _tip;
+    private TipBar _tipBar;
+
+    //Level time variables
+    [SerializeField] private float _levelTime = 90; 
     private float _currentTime;
     private bool _levelInProgress;
-    [SerializeField] private GameObject _moons;
-    [SerializeField] private GameObject _meteors;
-    [SerializeField] private float _startTime = 6;
-    [SerializeField] private GameObject _timer;
     private TextMeshProUGUI _timerText;
+    
+    //GameObjects we need in game manager
+    // [SerializeField] private GameObject _moons;
+    // [SerializeField] private GameObject _meteors;
+    // [SerializeField] private GameObject _costumers;
+    [SerializeField] private GameObject _LevelObjects;
+    [SerializeField] private GameObject _timer;
     [SerializeField] private GameObject _tipGameObject;
-    private TipBar _tipBar;
+
+    
+    [SerializeField] private float _startTime = 6;
+   
     public GameObject _rope;
     private bool _isPaused;
     private bool _gameStart;
     public float _customerPatience;
-    [SerializeField] private float _tipFactor = 1;
     
 
     void Awake()
@@ -81,7 +91,7 @@ public class GameManager : MonoBehaviour
 
     public void AddScore(double tip)
     {
-        _tip += (float)Math.Round(_tip * _tipFactor, 1);
+        _tip += (float)Math.Round(tip * _tipFactor, 1);
         Debug.Log(_tip);
         //add tip updater
         _tipBar.UpdateTip(_tip);
@@ -95,8 +105,10 @@ public class GameManager : MonoBehaviour
     {
         //TODO add countdown or something
         _gameStart = true;
-        _moons.SetActive(true);
-        _meteors.SetActive(true);
+        _LevelObjects.SetActive(true);
+        // _moons.SetActive(true);
+        // _meteors.SetActive(true);
+        // _costumers.SetActive(true);
     }
 
     public float getTipGoal()

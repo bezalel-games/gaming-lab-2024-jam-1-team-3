@@ -17,8 +17,8 @@ public class Meteors : MonoBehaviour
     private Vector2 endPoint;
     public float speed = 5.0f;
 
-    private float minDelay = 4;
-    private float maxDelay = 12;
+    [SerializeField] private float minDelay = 4;
+    [SerializeField] private float maxDelay = 12;
     private float minScale = 0.3f;
     private float maxScale = 0.8f;
     private float rotationSpeed;

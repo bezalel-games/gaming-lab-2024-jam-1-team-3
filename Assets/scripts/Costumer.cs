@@ -71,7 +71,7 @@ public class Costumer : MonoBehaviour
 
     public IEnumerator StartPizzaEvent()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.7f);
         RequestPizza();
     }
 
@@ -92,7 +92,7 @@ public class Costumer : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("Pizza") & _inEvent)
+        if (other.CompareTag("Pizza") & _inEvent & !Movement.isStunned)
         {
             _isInside = true;
             _timeInside += Time.deltaTime;
@@ -100,6 +100,7 @@ public class Costumer : MonoBehaviour
             
             if (_timeInside >= _requiredTime && _isInside)
             {
+                _timeInside = 0;
                 //TODO add pizza delivery animation
                 PizzeDelivered();
                 _isInside = false;
