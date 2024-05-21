@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
@@ -12,6 +11,7 @@ public class Costumer : MonoBehaviour
     [SerializeField] private float _requiredTime = 3f;
     [SerializeField] private GameObject _alien;
     private Alien _alienClass;
+    private CostumerMovement _cm;
     
     //delivery time parameters
     [SerializeField] private GameObject _deliveryTimeGameObject;
@@ -26,6 +26,7 @@ public class Costumer : MonoBehaviour
     
     private void Awake()
     {
+        _cm = GetComponent<CostumerMovement>();
         _initialPatience = 9 ;//TODO GameManager.Instance._customerPatience;
         _alienClass = _alien.GetComponent<Alien>();
         _deliveryTimeIndicator = _deliveryTimeGameObject.GetComponent<Image>();
@@ -33,7 +34,6 @@ public class Costumer : MonoBehaviour
 
     void Start()
     {
-        StartPizzaEvent();
         _patience = _initialPatience;
     }
     private void Update()
@@ -58,7 +58,7 @@ public class Costumer : MonoBehaviour
         _flipOff.SetActive(false);
         yield return new WaitForSeconds(0.3f);
         _alien.SetActive(false);
-        //add here leave mechanic
+        _cm.EndEvent();
     }
 
     private void FailedDelivery()
@@ -69,14 +69,15 @@ public class Costumer : MonoBehaviour
         StartCoroutine(FlipOffSequence());
     }
 
-    private IEnumerator StartPizzaEvent()
+    public IEnumerator StartPizzaEvent()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1.5f);
         RequestPizza();
     }
 
     private void RequestPizza()
     {
+        Debug.Log("Starting Costumer Pizza event");
         _inEvent = true;
         _alien.SetActive(true);
     }
@@ -87,7 +88,7 @@ public class Costumer : MonoBehaviour
         GameManager.Instance.AddScore(Math.Max(_patience, 0));
         _patience = _initialPatience;
         _alien.SetActive(false);
-        //add leave mechanic here
+        _cm.EndEvent();
     }
     private void OnTriggerStay2D(Collider2D other)
     {

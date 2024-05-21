@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     private bool _isPaused;
     private bool _gameStart;
     public float _customerPatience;
+    [SerializeField] private float _tipFactor = 1;
     
 
     void Awake()
@@ -75,7 +76,7 @@ public class GameManager : MonoBehaviour
 
     public void AddScore(double tip)
     {
-        _tip += (float)Math.Round(tip, 1);
+        _tip += (float)Math.Round(_tip * _tipFactor, 1);
         Debug.Log(_tip);
         //add tip updater
         _tipBar.UpdateTip(_tip);

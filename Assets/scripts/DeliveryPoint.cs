@@ -106,7 +106,7 @@ public class DeliveryPoint : MonoBehaviour
             
             if (_timeInside >= _requiredTime && _isInside)
             {
-                //add pizza delivery animation
+                _timeInside = 0;
                 PizzeDelivered();
                 _isInside = false;
             }
