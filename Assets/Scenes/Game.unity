@@ -257,7 +257,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.12561536, y: 0.00032933793}
+  m_ConnectedAnchor: {x: 0.12561536, y: 0.00032934998}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -434,17 +434,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e35ffde7f57ab4355a2ff9482cac8e7d, type: 3}
---- !u!114 &187403567 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5776054918776693206, guid: e102b990854b848468d32e7213895a8d, type: 3}
-  m_PrefabInstance: {fileID: 9103494324527524929}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &214030442
 GameObject:
   m_ObjectHideFlags: 0
@@ -494,7 +483,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.053591035, y: -0.000000045719396}
+  m_ConnectedAnchor: {x: 0.053591035, y: -0.000000050851863}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -720,7 +709,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.08708555, y: -0.000000052305012}
+  m_ConnectedAnchor: {x: 0.08708555, y: -0.000000060645284}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -2559,17 +2548,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 007c621d46dcf4efaafcca2341ac08d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &820014308 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1897334684299044346, guid: 021a0b6313ffd9748acb2654c9db44af, type: 3}
-  m_PrefabInstance: {fileID: 5948842437295405193}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16d6d6c099ae24cfbab9ba13acb39608, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &822438530
 GameObject:
   m_ObjectHideFlags: 0
@@ -3085,17 +3063,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bca90dc9a70548649490d815b576813, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _alien: {fileID: 820014308}
-  _astronaut: {fileID: 1312265460}
-  _moons: {fileID: 1504106051}
-  _meteors: {fileID: 780893350}
-  _startTime: 3
-  _startText: {fileID: 187403567}
+  _tipFactor: 1
+  _tipGoal: 20
+  _levelTime: 90
+  MenuPanel: {fileID: 0}
+  _LevelObjects: {fileID: 0}
   _timer: {fileID: 650573581}
-  _quota: {fileID: 1756913199}
-  _pause: {fileID: 1410098445}
-  _unpauseTextGO: {fileID: 2078026185}
+  _tipGameObject: {fileID: 0}
   _rope: {fileID: 2126573661}
+  _startTime: 3
+  _customerPatience: 0
 --- !u!4 &982794419
 Transform:
   m_ObjectHideFlags: 0
@@ -3474,6 +3451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8abe77173f4575428be3e5fb3ef7719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movement: {fileID: 0}
 --- !u!231 &1024564175
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -3894,11 +3872,6 @@ RectTransform:
   m_AnchoredPosition: {x: -679, y: 188}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1312265460 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 994799867408147184, guid: e102b990854b848468d32e7213895a8d, type: 3}
-  m_PrefabInstance: {fileID: 9103494324527524929}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1315896447
 GameObject:
   m_ObjectHideFlags: 0
@@ -3948,7 +3921,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.07368755, y: 0.000000012927197}
+  m_ConnectedAnchor: {x: 0.07368755, y: 0.00000000587006}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -4969,7 +4942,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.10048331, y: -0.00000016296156}
+  m_ConnectedAnchor: {x: 0.10048331, y: -0.00000017258493}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -5443,7 +5416,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.06531392, y: -0.000000012519329}
+  m_ConnectedAnchor: {x: 0.06531392, y: -0.000000018774509}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -5842,6 +5815,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42a987221f3634c5f91a77760e739aad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  astronaut: {fileID: 0}
 --- !u!232 &1870091149
 DistanceJoint2D:
   m_ObjectHideFlags: 0
@@ -6078,6 +6052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42a987221f3634c5f91a77760e739aad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  astronaut: {fileID: 0}
 --- !u!1 &2063650053
 GameObject:
   m_ObjectHideFlags: 0
@@ -6482,7 +6457,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.080386795, y: -0.00000006973642}
+  m_ConnectedAnchor: {x: 0.080386795, y: -0.000000077435146}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0

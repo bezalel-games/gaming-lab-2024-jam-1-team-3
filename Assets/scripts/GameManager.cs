@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
     
     void Start()
     {
+        MenuPanel.SetActive(false);
         _currentTime = _levelTime;
         _levelInProgress = true;
 
@@ -94,7 +95,7 @@ public class GameManager : MonoBehaviour
 
     public void AddScore(double tip)
     {
-        _tip += (float)Math.Round(_tip * _tipFactor, 1);
+        _tip += (float)Math.Round(tip * _tipFactor, 1);
         Debug.Log(_tip);
         //add tip updater
         _tipBar.UpdateTip(_tip);
@@ -117,6 +118,10 @@ public class GameManager : MonoBehaviour
     public float getTipGoal()
     {
         return _tipGoal;
+    }
+    public float getTip()
+    {
+        return _tip;
     }
 
     public float getCostumerPatience()
