@@ -39,14 +39,14 @@ public class CostumerMovement : MonoBehaviour
             transform.position = Vector3.MoveTowards(v1, _gotoPoint, step);
         }
 
-        if (Vector2.Distance(v1, _gotoPoint) < 0.1 && !_pizzaRequested)
+        if (Vector2.Distance(v1, _gotoPoint) < 0.01 && !_pizzaRequested)
         {
             Debug.Log("In Pizza Point");
             _pizzaRequested = true;
             _inEvent = true;
             StartCoroutine(_costumerController.StartPizzaEvent());
         }
-        if (Vector2.Distance(v1, _gotoPoint) < 0.1 && _isLeaving)
+        if (Vector2.Distance(v1, _gotoPoint) < 0.01 && _isLeaving)
         {
             Debug.Log("In Home Point");
             StartCoroutine(ResetMovementLoop());

@@ -8,25 +8,36 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public Alien _alien;
-    private float _tip = 0;
-    private float _tipGoal = 20;
-    private float _levelTime = 90; 
+    
+    //tip variables
+    [SerializeField] private float _tipFactor = 1;
+    [SerializeField] private float _tipGoal = 20;
+    private float _tip;
+    private TipBar _tipBar;
+
+    //Level time variables
+    [SerializeField] private float _levelTime = 90; 
     private float _currentTime;
     private bool _levelInProgress;
-    [SerializeField] private GameObject _moons;
-    [SerializeField] private GameObject _meteors;
-    [SerializeField] private float _startTime = 6;
-    [SerializeField] private GameObject _timer;
     private TextMeshProUGUI _timerText;
     [SerializeField] private GameObject MenuPanel;
+    
+    //GameObjects we need in game manager
+    // [SerializeField] private GameObject _moons;
+    // [SerializeField] private GameObject _meteors;
+    // [SerializeField] private GameObject _costumers;
+    [SerializeField] private GameObject _LevelObjects;
+    [SerializeField] private GameObject _timer;
     [SerializeField] private GameObject _tipGameObject;
-    private TipBar _tipBar;
     public GameObject _rope;
+
+    
+    [SerializeField] private float _startTime = 6;
+   
     private bool _isPaused;
     private bool _gameStart;
     public float _customerPatience;
-    [SerializeField] private float _tipFactor = 1;
+   
 
     
 
@@ -41,7 +52,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("Too many game instances");
         }
-        PauseGame._isPaused = false;
+
         _tipBar = _tipGameObject.GetComponent<TipBar>();
         _timerText = _timer.GetComponent<TextMeshProUGUI>();
     }
@@ -50,8 +61,6 @@ public class GameManager : MonoBehaviour
     {
         _currentTime = _levelTime;
         _levelInProgress = true;
-         MenuPanel.SetActive(false);
-         
 
     }
 
@@ -99,8 +108,10 @@ public class GameManager : MonoBehaviour
     {
         //TODO add countdown or something
         _gameStart = true;
-        _moons.SetActive(true);
-        _meteors.SetActive(true);
+        _LevelObjects.SetActive(true);
+        // _moons.SetActive(true);
+        // _meteors.SetActive(true);
+        // _costumers.SetActive(true);
     }
 
     public float getTipGoal()
@@ -112,7 +123,6 @@ public class GameManager : MonoBehaviour
     {
         return _customerPatience;
     }
-
 }
 
 

@@ -18,6 +18,7 @@ public class StartAstronaut : MonoBehaviour
 
     private void Start()
     {
+        _startText.text = "Your tip goal for today is: " + GameManager.Instance.getTipGoal() + "$";
         StartCoroutine(StartAnimation());
     }
 
@@ -35,7 +36,6 @@ public class StartAstronaut : MonoBehaviour
         //Taken from this video: https://www.youtube.com/watch?v=jTPOCglHejE&ab_channel=SasquatchBStudios 
         _startText.text = "";
         string originalText = p;
-        Debug.Log("P is :" + p);
         string displayText;
         int alphaIndex = 0;
         float typeFraction = animationTime / p.Length;
