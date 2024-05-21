@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StartButton : MonoBehaviour
+public class NewBehaviourScript : MonoBehaviour
 {
     public void OnPlayButtonClick()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Programmers");
+        SceneManager.LoadScene("MainMenu");
     }
 }

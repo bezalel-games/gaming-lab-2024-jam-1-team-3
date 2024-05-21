@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float _startTime = 6;
     [SerializeField] private GameObject _timer;
     private TextMeshProUGUI _timerText;
+    [SerializeField] private GameObject MenuPanel;
     [SerializeField] private GameObject _tipGameObject;
     private TipBar _tipBar;
     public GameObject _rope;
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
     private bool _gameStart;
     public float _customerPatience;
     [SerializeField] private float _tipFactor = 1;
+
     
 
     void Awake()
@@ -39,7 +41,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("Too many game instances");
         }
-
+        PauseGame._isPaused = false;
         _tipBar = _tipGameObject.GetComponent<TipBar>();
         _timerText = _timer.GetComponent<TextMeshProUGUI>();
     }
@@ -48,6 +50,8 @@ public class GameManager : MonoBehaviour
     {
         _currentTime = _levelTime;
         _levelInProgress = true;
+         MenuPanel.SetActive(false);
+         
 
     }
 
@@ -108,6 +112,7 @@ public class GameManager : MonoBehaviour
     {
         return _customerPatience;
     }
+
 }
 
 
