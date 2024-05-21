@@ -6,9 +6,14 @@ using UnityEngine;
 public class SpaceShip : MonoBehaviour
 {
     private Rigidbody2D _rb;
-    private void Start()
+    [SerializeField] private GameObject astronaut;
+    private Astronaut _astronaut;
+
+     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _astronaut = astronaut.GetComponent<Astronaut>();
+
     }
 
     void Update()
@@ -19,13 +24,11 @@ public class SpaceShip : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (other.transform.CompareTag("Meteor"))
+        if (collider.transform.CompareTag("Meteor"))
         {
-            Debug.Log("YOU LOOSE!");
-            Debug.Log("EXPLOSION!");
-            Destroy(transform.parent.gameObject);
+            _astronaut.Stun();
         }
     }
 }

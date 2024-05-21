@@ -1,6 +1,8 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+    
 
 
 public class GameManager : MonoBehaviour
@@ -45,6 +47,7 @@ public class GameManager : MonoBehaviour
     {
         _currentTime = _levelTime;
         _levelInProgress = true;
+
     }
 
     void Update()
@@ -60,6 +63,8 @@ public class GameManager : MonoBehaviour
             {
                 _currentTime = 0;
                 _levelInProgress = false;
+                SceneManager.LoadScene("GameOver");
+                
                 Debug.Log("Time's up! YOU LOSE!");
             }
         }
@@ -102,6 +107,8 @@ public class GameManager : MonoBehaviour
     {
         return _customerPatience;
     }
-
 }
+
+
+    
 
