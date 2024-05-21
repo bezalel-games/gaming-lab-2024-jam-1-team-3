@@ -8,6 +8,6 @@ public class StartButton : MonoBehaviour
     public void OnPlayButtonClick()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Programmers");
+        SceneManager.LoadScene("Tutorial");
     }
 }

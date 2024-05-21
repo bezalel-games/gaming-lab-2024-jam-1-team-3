@@ -219,6 +219,7 @@ GameObject:
   - component: {fileID: 107277937}
   - component: {fileID: 107277939}
   - component: {fileID: 107277938}
+  - component: {fileID: 107277940}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -277,6 +278,29 @@ MonoBehaviour:
   _rope: {fileID: 776233774}
   _startTime: 3
   _customerPatience: 9
+--- !u!114 &107277940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107277936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04bb97fe71ba7144aac591da7f7f2808, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointRadius: 0.15
+  stickThickness: 2
+  pointCol: {r: 1, g: 1, b: 1, a: 0}
+  fixedPointCol: {r: 1, g: 0.4009434, b: 0.4009434, a: 0}
+  lineCol: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 0}
+  lineDrawCol: {r: 0.14150941, g: 0.14150941, b: 0.14150941, a: 0}
+  autoStickMode: 0
+  constrainStickMinLength: 1
+  simulating: 0
+  gravity: 10
+  solveIterations: 5
 --- !u!1 &131488836
 GameObject:
   m_ObjectHideFlags: 0
@@ -1547,6 +1571,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1628,6 +1653,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86832f84a0cf34eb9b89129d49b7a15e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startConfig: {fileID: 11400000, guid: b47c144ea905e432bbce43fbef5b4644, type: 2}
+  crtRenderSettings: {fileID: 11400000, guid: 2d929546960894d169f1999a321e4ff4, type: 2}
+  _runtimeMaterial: {fileID: 1260947406}
+  data:
+    pixelationAmount: 5
+    maxColorChannels:
+      red: 2
+      green: 2
+      blue: 2
+      greyScale: 0
+    dithering4: 0
+    dithering8: 0.351
+    vignette: 0.561
+    innerCurve: 2.51
+    monitorCurve: 0.083
+    monitorInnerSize:
+      width: 0
+      height: 0
+    monitorOutterSize:
+      width: 0.13
+      height: 0.137
+    zoom: 1.222
+    monitorRoundness: 0.2
+    monitorTexture: {fileID: 2800000, guid: a5e897f9f29eb488ba4791cd52d004b5, type: 3}
+    monitorColor: {r: 0.13950695, g: 0.14944103, b: 0.31132078, a: 0.34117648}
+    innerMonitorDarkness: 0.256
+    innerMonitorShine: 0.171
+    colorScans:
+      greenChannelMultiplier: -0.212
+      redBlueChannelMultiplier: -0.044
+      sizeMultiplier: 0.51
+    innerMonitorShineRadius: -0.087
+    innerMonitorShineCurve: 10
 --- !u!1 &521088467
 GameObject:
   m_ObjectHideFlags: 0
@@ -3719,6 +3789,127 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1231938812}
   m_CullTransparentMesh: 1
+--- !u!21 &1260947406
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: CRTMaterial
+  m_Shader: {fileID: 4800000, guid: ceeb1ce606d5447c6a1929f7ee96037c, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BorderTex:
+        m_Texture: {fileID: 2800000, guid: a5e897f9f29eb488ba4791cd52d004b5, type: 3}
+        m_Scale: {x: 3, y: 3}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Overlay:
+        m_Texture: {fileID: 2800000, guid: 9d90fd2ef2021d049b77c8ec5650556d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _BorderInnerDarkerAmount: 0.74399996
+    - _BorderInnerSharpness: 0.996
+    - _BorderInnerSizeX: 0
+    - _BorderInnerSizeY: 0
+    - _BorderOutterRound: 0.2
+    - _BorderOutterSharpness: 1
+    - _BorderOutterSizeX: 0.13
+    - _BorderOutterSizeY: 0.137
+    - _BorderZoom: 1.222
+    - _BottomStaticOpt: 0
+    - _BumpScale: 1
+    - _CrtGlowAmount: 0.171
+    - _CrtReflectionCurve: 10
+    - _CrtReflectionFalloff: 0.24
+    - _CrtReflectionRadius: -0.087
+    - _Curvature: 2.51
+    - _Curvature2: 0.083
+    - _Cutoff: 0.5
+    - _Desaturation: 0
+    - _DetailNormalMapScale: 1
+    - _DitherScreenScale: 1
+    - _DstBlend: 0
+    - _GlossMapScale: 1
+    - _Glossiness: 0.5
+    - _GlossyReflections: 1
+    - _HorzFuzzOpt: 0.1
+    - _Intensity: 0.667
+    - _MaxColorsBlue: 2
+    - _MaxColorsGreen: 2
+    - _MaxColorsRed: 2
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _Parallax: 0.02
+    - _RgbOffsetOpt: 0.07
+    - _ScanlinesOpt: 0.4
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _Spread: 0
+    - _Spread8: 0.351
+    - _SrcBlend: 1
+    - _UVSec: 0
+    - _VertJerkOpt: 1
+    - _VertMovementOpt: 1
+    - _VigSize: 0.561
+    - _ZWrite: 1
+    m_Colors:
+    - _BorderTint: {r: 0.13950695, g: 0.14944103, b: 0.31132078, a: 0.34117648}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _ColorScans: {r: -0.212, g: -0.044, b: 0.51, a: 0}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &1266588863
 GameObject:
   m_ObjectHideFlags: 0

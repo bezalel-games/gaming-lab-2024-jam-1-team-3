@@ -1,6 +1,6 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine;
 
@@ -10,26 +10,40 @@ public class Tutorial : MonoBehaviour
     private const string HTML_ALPHA = "<color=#00000000>";
     [SerializeField] private GameObject _moon;
     private int _phase;
+    private bool _gotTip;
+    [SerializeField] private GameObject _arrow;
+    [SerializeField] private GameObject _meteors;
 
     private void Awake()
     {
-        _tutorialText = transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        _tutorialText = transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0)
+            .GetComponent<TextMeshProUGUI>();
     }
 
     void Start()
     {
-        _tutorialText.text = "Welcome! Use the WASD keys or the Arrow keys to move. Use Space to break.";
+        _tutorialText.text = "Welcome! Use the WASD or the Arrow keys to move. Use Space to break.";
         StartCoroutine(RollText(3, _tutorialText.text));
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            SceneManager.LoadScene("Programmers");
+        }
+        if (!_gotTip && _phase == 2 && GameManager.Instance.getTip() > 0)
+        {
+            _gotTip = true;
+            StartCoroutine(GotTip());
+        }
     }
 
     private IEnumerator RollText(float animationTime, string p)
     {
+        _phase++;
+
         //Taken from this video: https://www.youtube.com/watch?v=jTPOCglHejE&ab_channel=SasquatchBStudios 
         _tutorialText.text = "";
         string originalText = p;
@@ -46,54 +60,61 @@ public class Tutorial : MonoBehaviour
             yield return new WaitForSeconds(typeFraction);
         }
 
-        yield return new WaitForSeconds(3);
-        _phase++;
-        NextPhase();
-    }
-
-    private void NextPhase()
-    {
         if (_phase == 1)
         {
-            _tutorialText.text = "";
-            string p = "Very good! Your objective is to deliver pizzas to aliens. Lets try it out.";
-            StartCoroutine(RollText(4, p));
+            StartCoroutine(SpawnMoon());
+        }
+        else if (_phase == 2)
+        {
+            //checking for tip in update
             _moon.SetActive(true);
-            StartCoroutine(CheckTip());
         }
-
-        if (_phase == 2)
+        else if (_phase == 3)
         {
-            _moon.SetActive(false);
-            _tutorialText.text = "";
-            string p = "You got a tip, Nice! Reach the tip goal in every level to advance.";
-            StartCoroutine(RollText(4, p));
-            //Arrows pinting at UI
+            StartCoroutine(StartAsteroidsPhase());
         }
-
-        if (_phase == 3)
-        {
-            //stop arrows
-            //WATCH OUT! meteors!!!!!
-            // meteors phase
-        }
-
-        if (_phase == 4)
-        {
-            //thats it good luck
-            //goes to level 1
-        }
-
     }
 
-    private IEnumerator CheckTip()
+    private IEnumerator SpawnMoon()
     {
-        while (GameManager.Instance.getTip() == 0)
-        {
-            continue;
-        }
-        NextPhase();
+        yield return new WaitForSeconds(3.5f);
+        _tutorialText.text = "";
+        string p = "Very good! Your objective is to deliver pizzas to aliens. Lets try it out.";
+        StartCoroutine(RollText(4, p));
     }
-    
+
+    private IEnumerator GotTip()
+    {
+        yield return new WaitForSeconds(2);
+        _moon.SetActive(false);
+        _tutorialText.text = "";
+        string p = "You got a tip, Nice! Reach the tip goal in every level to advance.";
+        StartCoroutine(RollText(4, p));
+        yield return new WaitForSeconds(1.5f); //make arrow apear
+        _arrow.SetActive(true);
+        yield return new WaitForSeconds(3);
+        _arrow.SetActive(false);
+    }
+
+    private IEnumerator StartAsteroidsPhase()
+    {
+        yield return new WaitForSeconds(2);
+        _tutorialText.text = "";
+        string s = "Oh, I forgot to tell you, there are ASTEROIDS!";
+        StartCoroutine(RollText(4, s));
+        yield return new WaitForSeconds(2);
+        _meteors.SetActive(true);
+        yield return new WaitForSeconds(6);
+        StartCoroutine(StartGame());
+    }
+
+    private IEnumerator StartGame()
+    {
+        _tutorialText.text = "";
+        string s = "GOOD LUCK!";
+        StartCoroutine(RollText(1, s));
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("Programmers");
+    }
 
 }
