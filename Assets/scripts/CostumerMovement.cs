@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 using Random = UnityEngine.Random;
 
 public class CostumerMovement : MonoBehaviour
@@ -33,20 +34,24 @@ public class CostumerMovement : MonoBehaviour
     private void Update()
     {
         Vector2 v1 = transform.position;
+        float distanceFromPoint = Vector2.Distance(v1, _gotoPoint);
         if (!_inEvent)
         {
             var step = _speed * Time.deltaTime; // calculate distance to move
             transform.position = Vector3.MoveTowards(v1, _gotoPoint, step);
         }
 
-        if (Vector2.Distance(v1, _gotoPoint) < 0.01 && !_pizzaRequested)
+        if (distanceFromPoint < 0.01 && !_pizzaRequested)
         {
-            Debug.Log("In Pizza Point");
-            _pizzaRequested = true;
-            _inEvent = true;
-            StartCoroutine(_costumerController.StartPizzaEvent());
+            if (PosOnScreen())
+            {
+                Debug.Log("In Pizza Point");
+                _pizzaRequested = true;
+                _inEvent = true;
+                StartCoroutine(_costumerController.StartPizzaEvent());
+            }
         }
-        if (Vector2.Distance(v1, _gotoPoint) < 0.01 && _isLeaving)
+        if (distanceFromPoint < 0.01 && _isLeaving)
         {
             Debug.Log("In Home Point");
             StartCoroutine(ResetMovementLoop());
@@ -79,5 +84,17 @@ public class CostumerMovement : MonoBehaviour
         _gotoPoint = _returnPoints[Random.Range(0, 3)];
         goToPoint();
         _inEvent = false;
+    }
+
+    private bool PosOnScreen()
+    {
+        var position = transform.position;
+        Vector2 v = new Vector2(position.x, position.y);
+        if (Mathf.Abs(v.y) > 5.2 || Mathf.Abs(v.x) > 9.5)
+        {
+            //Debug.Log("false");
+            return false;
+        }
+        return true;
     }
 }
