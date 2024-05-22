@@ -40,10 +40,13 @@ public class DeliveryPoint : MonoBehaviour
     private SpriteRenderer _haloSR;
     [SerializeField] private GameObject _transfer;
     private Animator _transferAnim;
-    
-    
+    private SpriteRenderer _transferSR;
+    private static readonly int Time1 = Animator.StringToHash("Time");
+
+
     private void Awake()
     {
+        _transferSR = _transfer.GetComponent<SpriteRenderer>();
         _transferAnim = _transfer.GetComponent<Animator>();
         _sr = GetComponent<SpriteRenderer>();
         _haloSR = _halo.GetComponent<SpriteRenderer>();
@@ -54,6 +57,7 @@ public class DeliveryPoint : MonoBehaviour
 
     void Start()
     {
+        _transferAnim.SetFloat(Time1, _requiredTime);
         _initialPatience = GameManager.Instance._customerPatience;
         StartCoroutine(StartPizzaEvent());
         _patience = _initialPatience;
@@ -125,10 +129,10 @@ public class DeliveryPoint : MonoBehaviour
     {
         if (other.CompareTag("Pizza") & _inEvent && !Movement.isStunned)
         {
+            _transfer.SetActive(true);
             _isInside = true;
             _timeInside += Time.deltaTime;
-            _deliveryTimeIndicator.fillAmount = _timeInside / _requiredTime;
-            
+            //_deliveryTimeIndicator.fillAmount = _timeInside / _requiredTime;
             if (_timeInside >= _requiredTime && _isInside)
             {
                 _timeInside = 0;
@@ -146,6 +150,7 @@ public class DeliveryPoint : MonoBehaviour
 
     private IEnumerator PizzeDelivered()
     {
+        _transfer.SetActive(false);
         _ps.Play();
         _inEvent = false;
         GameManager.Instance.AddScore(Math.Max(_patience, 0));
@@ -162,6 +167,7 @@ public class DeliveryPoint : MonoBehaviour
         _haloSR.enabled = false;
         _isInside = false;
         _timeInside = 0;
+        _transfer.SetActive(false);
         _deliveryTimeIndicator.fillAmount = _timeInside;
     }
 
