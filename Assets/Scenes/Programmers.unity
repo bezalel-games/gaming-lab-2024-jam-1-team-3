@@ -269,8 +269,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tipFactor: 1
-  _tipGoal: 100
-  _levelTime: 90
+  _tipGoal: 40
+  _levelTime: 45
   MenuPanel: {fileID: 2095797791}
   _LevelObjects: {fileID: 1057004316}
   _timer: {fileID: 1162376043}
@@ -285,7 +285,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 107277936}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04bb97fe71ba7144aac591da7f7f2808, type: 3}
   m_Name: 
@@ -961,6 +961,67 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e35ffde7f57ab4355a2ff9482cac8e7d, type: 3}
+--- !u!1001 &312609972
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3118950882913422877, guid: 021a0b6313ffd9748acb2654c9db44af, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.706406
+      objectReference: {fileID: 0}
+    - target: {fileID: 3118950882913422877, guid: 021a0b6313ffd9748acb2654c9db44af, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.425004
+      objectReference: {fileID: 0}
+    - target: {fileID: 3118950882913422877, guid: 021a0b6313ffd9748acb2654c9db44af, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.003953114
+      objectReference: {fileID: 0}
+    - target: {fileID: 3118950882913422877, guid: 021a0b6313ffd9748acb2654c9db44af, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3118950882913422877, guid: 021a0b6313ffd9748acb2654c9db44af, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3118950882913422877, guid: 021a0b6313ffd9748acb2654c9db44af, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3118950882913422877, guid: 021a0b6313ffd9748acb2654c9db44af, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3118950882913422877, guid: 021a0b6313ffd9748acb2654c9db44af, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3118950882913422877, guid: 021a0b6313ffd9748acb2654c9db44af, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3118950882913422877, guid: 021a0b6313ffd9748acb2654c9db44af, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3421895765300447140, guid: 021a0b6313ffd9748acb2654c9db44af, type: 3}
+      propertyPath: m_Name
+      value: Moon + SpawnPoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 3421895765300447140, guid: 021a0b6313ffd9748acb2654c9db44af, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 021a0b6313ffd9748acb2654c9db44af, type: 3}
 --- !u!1 &339550658
 GameObject:
   m_ObjectHideFlags: 0
@@ -1660,7 +1721,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86832f84a0cf34eb9b89129d49b7a15e, type: 3}
   m_Name: 
@@ -3390,7 +3451,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1057004317
 Transform:
   m_ObjectHideFlags: 0
@@ -3919,7 +3980,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _HorzFuzzOpt: 0.1
-    - _Intensity: 0.609
+    - _Intensity: 0.368
     - _MaxColorsBlue: 2
     - _MaxColorsGreen: 2
     - _MaxColorsRed: 2
@@ -7850,3 +7911,4 @@ SceneRoots:
   - {fileID: 107277937}
   - {fileID: 1057004317}
   - {fileID: 754994454}
+  - {fileID: 312609972}
