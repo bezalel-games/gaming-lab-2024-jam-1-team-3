@@ -19,47 +19,7 @@ namespace BrewedInk.CRT
 
 		private string lastValidationId;
 
-		// private static readonly int PropMaxColorsRed = Shader.PropertyToID("_MaxColorsRed");
-		// private static readonly int PropMaxColorsGreen = Shader.PropertyToID("_MaxColorsGreen");
-		// private static readonly int PropMaxColorsBlue = Shader.PropertyToID("_MaxColorsBlue");
-		// private static readonly int PropDitheringAmount = Shader.PropertyToID("_Spread");
-		// private static readonly int PropDitheringAmount8 = Shader.PropertyToID("_Spread8");
-		// private static readonly int PropVignette = Shader.PropertyToID("_VigSize");
-		// private static readonly int PropMonitorRoundness = Shader.PropertyToID("_BorderOutterRound");
-		// private static readonly int PropMonitorTexture = Shader.PropertyToID("_BorderTex");
-		// private static readonly int PropMonitorColor = Shader.PropertyToID("_BorderTint");
-		// private static readonly int PropInnerDarkness = Shader.PropertyToID("_BorderInnerDarkerAmount");
-		// private static readonly int PropInnerGlow = Shader.PropertyToID("_CrtGlowAmount");
-		// private static readonly int PropInnerReflectionRadius = Shader.PropertyToID("_CrtReflectionRadius");
-		// private static readonly int PropInnerReflectionCurve = Shader.PropertyToID("_CrtReflectionCurve");
-		// private static readonly int PropMonitorCurve = Shader.PropertyToID("_Curvature2");
-		// private static readonly int PropInnerCurve = Shader.PropertyToID("_Curvature");
-		// private static readonly int PropZoom = Shader.PropertyToID("_BorderZoom");
-		// private static readonly int PropInnerSizeX = Shader.PropertyToID("_BorderInnerSizeX");
-		// private static readonly int PropInnerSizeY = Shader.PropertyToID("_BorderInnerSizeY");
-		// private static readonly int PropOutterSizeX = Shader.PropertyToID("_BorderOutterSizeX");
-		// private static readonly int PropOutterSizeY = Shader.PropertyToID("_BorderOutterSizeY");
-		// private static readonly int PropColorScans = Shader.PropertyToID("_ColorScans");
-		// private static readonly int PropDesaturation = Shader.PropertyToID("_Desaturation");
-		// private static readonly int PropBrewedInkBayer4 = Shader.PropertyToID("_BrewedInk_Bayer4");
-		// private static readonly int PropBrewedInkBayer8 = Shader.PropertyToID("_BrewedInk_Bayer8");
-
-		// private static readonly float[] bayer4 = new float[]{
-		// 	0,8,2,10,
-		// 	12,4,14,6,
-		// 	3,11,1,9,
-		// 	15,7,13,5
-		// };
-		// private static readonly float[] bayer8 = new float []{
-		// 	0,32,8,40,2,34,10,42,
-		// 	48,16,56,24,50,18,58,26,
-		// 	12,44,4,36,14,46,6,38,
-		// 	60,28,52,20,62,30,54,22,
-		// 	3,35,11,43,1,33,9,41,
-		// 	51,19,59,27,49,17,57,25,
-		// 	15,47,7,39,13,45,5,37,
-		// 	63,31,55,23,61,29,53,21
-		// };
+		
 
 		[ContextMenu("Reset Material")]
 		public void ResetMaterial()

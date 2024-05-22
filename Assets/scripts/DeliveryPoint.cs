@@ -112,6 +112,12 @@ public class DeliveryPoint : MonoBehaviour
                 _isInside = false;
             }
         }
+
+        if (Movement.isStunned)
+        {
+            _timeInside = 0;
+            _deliveryTimeIndicator.fillAmount = 0;
+        }
     }
 
     private void PizzeDelivered()
