@@ -22,7 +22,7 @@ public class Tutorial : MonoBehaviour
 
     void Start()
     {
-        _tutorialText.text = "Welcome! Use the WASD or the Arrow keys to move. Use Space to break.";
+        _tutorialText.text = "Welcome! Use the Arrow keys to move. Use Space to break.";
         StartCoroutine(RollText(3, _tutorialText.text));
     }
 

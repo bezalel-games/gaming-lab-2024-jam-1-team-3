@@ -8,6 +8,7 @@ using WaitForSeconds = UnityEngine.WaitForSeconds;
 
 public class DeliveryPoint : MonoBehaviour
 {
+    
     private bool _isInside;
     private float _timeInside;
     [SerializeField] private float _requiredTime = 3f;
@@ -16,6 +17,11 @@ public class DeliveryPoint : MonoBehaviour
     [SerializeField] private float _yDistance;
     [SerializeField] private GameObject _alien;
     private Alien _alienClass;
+
+    [SerializeField] private Sprite _openMoon;
+    [SerializeField] private Sprite _closedMoon;
+    [SerializeField] private Sprite _happyMoon;
+    [SerializeField] private Sprite _sadMoon;
     
     //delivery time parameters
     [SerializeField] private GameObject _deliveryTimeGameObject;
@@ -28,11 +34,22 @@ public class DeliveryPoint : MonoBehaviour
     //Status indicators
     [SerializeField] private GameObject _particles;
     private ParticleSystem _ps;
+    private SpriteRenderer _sr;
     [SerializeField] private GameObject _flipOff;
-    
-    
+    [SerializeField] private GameObject _halo;
+    private SpriteRenderer _haloSR;
+    [SerializeField] private GameObject _transfer;
+    private Animator _transferAnim;
+    private SpriteRenderer _transferSR;
+    private static readonly int Time1 = Animator.StringToHash("Time");
+
+
     private void Awake()
     {
+        _transferSR = _transfer.GetComponent<SpriteRenderer>();
+        _transferAnim = _transfer.GetComponent<Animator>();
+        _sr = GetComponent<SpriteRenderer>();
+        _haloSR = _halo.GetComponent<SpriteRenderer>();
         _ps = _particles.GetComponent<ParticleSystem>();
         _alienClass = _alien.GetComponent<Alien>();
         _deliveryTimeIndicator = _deliveryTimeGameObject.GetComponent<Image>();
@@ -40,8 +57,8 @@ public class DeliveryPoint : MonoBehaviour
 
     void Start()
     {
+        _transferAnim.SetFloat(Time1, _requiredTime);
         _initialPatience = GameManager.Instance._customerPatience;
-
         StartCoroutine(StartPizzaEvent());
         _patience = _initialPatience;
         RepositionInRect();
@@ -56,7 +73,7 @@ public class DeliveryPoint : MonoBehaviour
 
         if (_inEvent)
         {
-            if (!_isInside)
+            if (!_isInside || Movement.isStunned)
             {
                 _patience -= Time.deltaTime; //when alien requests pizza his patiance goes down
             }
@@ -69,8 +86,10 @@ public class DeliveryPoint : MonoBehaviour
     IEnumerator FlipOffSequence()
     {
         yield return new WaitForSeconds(0.3f);
+        _sr.sprite = _sadMoon;
         _flipOff.SetActive(true);
         yield return new WaitForSeconds(1.2f);
+        _sr.sprite = _closedMoon;
         _flipOff.SetActive(false);
         yield return new WaitForSeconds(0.3f);
         _alien.SetActive(false);
@@ -88,6 +107,7 @@ public class DeliveryPoint : MonoBehaviour
     private IEnumerator StartPizzaEvent()
     {
         yield return new WaitForSeconds(Random.Range(2,6));
+        _sr.sprite = _openMoon; 
         RequestPizza();
     }
 
@@ -97,37 +117,58 @@ public class DeliveryPoint : MonoBehaviour
         _alien.SetActive(true);
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Pizza") && !Movement.isStunned)
+        {
+            _haloSR.enabled = true;
+        }
+    }
+
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Pizza") & _inEvent && !Movement.isStunned)
         {
+            _transfer.SetActive(true);
             _isInside = true;
             _timeInside += Time.deltaTime;
-            _deliveryTimeIndicator.fillAmount = _timeInside / _requiredTime;
-            
+            //_deliveryTimeIndicator.fillAmount = _timeInside / _requiredTime;
             if (_timeInside >= _requiredTime && _isInside)
             {
                 _timeInside = 0;
-                PizzeDelivered();
+                StartCoroutine(PizzeDelivered());
                 _isInside = false;
             }
         }
+        
+        if (Movement.isStunned)
+        {
+            _transfer.SetActive(false);
+            _timeInside = 0;
+            _deliveryTimeIndicator.fillAmount = 0;
+        }
     }
 
-    private void PizzeDelivered()
+    private IEnumerator PizzeDelivered()
     {
+        _transfer.SetActive(false);
         _ps.Play();
         _inEvent = false;
         GameManager.Instance.AddScore(Math.Max(_patience, 0));
         _patience = _initialPatience;
         _alien.SetActive(false);
+        _sr.sprite = _happyMoon;
+        yield return new WaitForSeconds(1.5f);
+        _sr.sprite = _closedMoon;
         StartCoroutine(StartPizzaEvent());
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        _haloSR.enabled = false;
         _isInside = false;
         _timeInside = 0;
+        _transfer.SetActive(false);
         _deliveryTimeIndicator.fillAmount = _timeInside;
     }
 
