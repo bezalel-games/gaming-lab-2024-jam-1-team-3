@@ -29,18 +29,19 @@ public class Alien : MonoBehaviour
     private void RequestPizza()
     {
         thoughtBubble.SetActive(true);
-        StartCoroutine(ChangeBubbleColorOverTime(9)); //TODO GameManager.Instance._customerPatience;
+        StartCoroutine(ChangeBubbleColorOverTime(GameManager.Instance._customerPatience)); 
     }
 
     private IEnumerator ChangeBubbleColorOverTime(float patience)
     {
         // Debug.Log("Thought bubble active state after hiding: " + thoughtBubble.activeSelf);  // This should log 'false'.
+        
         bubbleRenderer.sprite = _sprite1;
-        yield return new WaitForSeconds(patience / 3); // Wait for 2 seconds
+        yield return new WaitForSeconds(patience*0.35f); 
         bubbleRenderer.sprite = _sprite2;
-        yield return new WaitForSeconds(patience / 3); // Wait for another 2 seconds
+        yield return new WaitForSeconds(patience*0.3f); 
         bubbleRenderer.sprite = _sprite3;
-        yield return new WaitForSeconds(patience / 3); // Wait before hiding the bubble
+        yield return new WaitForSeconds(patience*0.35f); 
     }
 
     public void HideThoughtBubble()
