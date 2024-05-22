@@ -73,7 +73,7 @@ public class DeliveryPoint : MonoBehaviour
 
         if (_inEvent)
         {
-            if (!_isInside)
+            if (!_isInside || Movement.isStunned)
             {
                 _patience -= Time.deltaTime; //when alien requests pizza his patiance goes down
             }
@@ -143,6 +143,7 @@ public class DeliveryPoint : MonoBehaviour
         
         if (Movement.isStunned)
         {
+            _transfer.SetActive(false);
             _timeInside = 0;
             _deliveryTimeIndicator.fillAmount = 0;
         }
