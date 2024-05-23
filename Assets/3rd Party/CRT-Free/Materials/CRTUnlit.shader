@@ -64,7 +64,6 @@ Shader "Unlit/PaperOverlay"
             fixed4 frag (v2f i) : SV_Target
             {
                 fixed4 mainColor = tex2D(_MainTex, i.uv);
-                mainColor.rgb *= mainColor.a;
                 
                 fixed4 overlayColor = tex2D(_Overlay, i.uv);
                 overlayColor.rgb *= overlayColor.a;

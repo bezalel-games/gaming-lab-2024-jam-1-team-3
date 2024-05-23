@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
 
     public void AddScore(double tip)
     {
-        _tip += (float)Math.Round(tip * _tipFactor, 1);
+        _tip += (float)Math.Round(tip * _tipFactor, 0);
         Debug.Log(_tip);
         //add tip updater
         _tipBar.UpdateTip(_tip);
@@ -103,6 +103,7 @@ public class GameManager : MonoBehaviour
         {
             _levelInProgress = false;
             Debug.Log("YOU WIN!");
+              SceneManager.LoadScene("WIN");
         }
     }
     public void SpawnLevelStartGame() 
