@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 
 
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Meteors : MonoBehaviour
 {
@@ -15,10 +17,10 @@ public class Meteors : MonoBehaviour
     private Vector2 endPoint;
     public float speed = 5.0f;
 
-    private float minDelay = 4;
-    private float maxDelay = 12;
-    private float minScale = 0.5f;
-    private float maxScale = 1.5f;
+    [SerializeField] private float minDelay = 4;
+    [SerializeField] private float maxDelay = 12;
+    private float minScale = 0.3f;
+    private float maxScale = 0.8f;
     private float rotationSpeed;
 
     private float minRotationSpeed = -90.0f;  // Minimum rotation speed (degrees per second)
@@ -56,6 +58,7 @@ public class Meteors : MonoBehaviour
         }
     }
 
+   
     void SetMeteorPath()
     {
         float randomScale = Random.Range(minScale, maxScale);
@@ -82,7 +85,10 @@ public class Meteors : MonoBehaviour
                 break;
         }
         transform.position = startPoint;
-        transform.right = endPoint - startPoint;
+        // Adjust the direction the meteor is facing
+        Vector2 direction = endPoint - startPoint;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
 
     IEnumerator MoveMeteor()
