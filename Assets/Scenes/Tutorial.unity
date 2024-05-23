@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _unpauseTextGO: {fileID: 1688506528}
-  MenuPanel: {fileID: 2095797791}
+  MenuPanel: {fileID: 483955960}
 --- !u!114 &107277939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1413,6 +1413,11 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &483955960 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3465040395772707753, guid: 090409adbc34c4c46b27f30a1dbe882c, type: 3}
+  m_PrefabInstance: {fileID: 2053543753046112847}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

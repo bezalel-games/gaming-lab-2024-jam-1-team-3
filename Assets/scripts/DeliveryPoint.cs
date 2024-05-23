@@ -8,7 +8,7 @@ using WaitForSeconds = UnityEngine.WaitForSeconds;
 
 public class DeliveryPoint : MonoBehaviour
 {
-    private bool _InFlipOffSequence;
+    private bool _inFlipOffSequence;
     private bool _overwriteThoguhtBubble;
     private bool _isInside;
     private float _timeInside;
@@ -41,13 +41,11 @@ public class DeliveryPoint : MonoBehaviour
     private SpriteRenderer _haloSR;
     [SerializeField] private GameObject _transfer;
     private Animator _transferAnim;
-    private SpriteRenderer _transferSR;
     private static readonly int Time1 = Animator.StringToHash("Time");
 
 
     private void Awake()
     {
-        _transferSR = _transfer.GetComponent<SpriteRenderer>();
         _transferAnim = _transfer.GetComponent<Animator>();
         _sr = GetComponent<SpriteRenderer>();
         _haloSR = _halo.GetComponent<SpriteRenderer>();
@@ -92,7 +90,7 @@ public class DeliveryPoint : MonoBehaviour
     }
     IEnumerator FlipOffSequence()
     {
-        _InFlipOffSequence = true;
+        _inFlipOffSequence = true;
         yield return new WaitForSeconds(0.3f);
         _sr.sprite = _sadMoon;
         _flipOff.SetActive(true);
@@ -100,7 +98,7 @@ public class DeliveryPoint : MonoBehaviour
         _sr.sprite = _closedMoon;
         _flipOff.SetActive(false);
         yield return new WaitForSeconds(0.3f);
-        _InFlipOffSequence = false;
+        _inFlipOffSequence = false;
         _alien.SetActive(false);
         StartCoroutine(StartPizzaEvent());
     }
@@ -174,10 +172,9 @@ public class DeliveryPoint : MonoBehaviour
         _sr.sprite = _closedMoon;
         StartCoroutine(StartPizzaEvent());
     }
-
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (_overwriteThoguhtBubble && !_InFlipOffSequence)
+        if (_overwriteThoguhtBubble && !_inFlipOffSequence)
         {
             _alienClass.thoughtBubble.SetActive(true);
         }
