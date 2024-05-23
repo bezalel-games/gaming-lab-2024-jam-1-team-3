@@ -30,17 +30,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _timer;
     [SerializeField] private GameObject _tipGameObject;
     public GameObject _rope;
-
     
-    [SerializeField] private float _startTime = 6;
+    [SerializeField] public float _startTime = 6;
    
     private bool _isPaused;
     private bool _gameStart;
     public float _customerPatience;
-   
-
     
-
     void Awake()
     {
         _customerPatience = 9;
@@ -62,7 +58,6 @@ public class GameManager : MonoBehaviour
         MenuPanel.SetActive(false);
         _currentTime = _levelTime;
         _levelInProgress = true;
-
     }
 
     void Update()

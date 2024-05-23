@@ -77,9 +77,9 @@ public class Tutorial : MonoBehaviour
 
     private IEnumerator SpawnMoon()
     {
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(4.5f);
         _tutorialText.text = "";
-        string p = "Very good! Your objective is to deliver pizzas to aliens. Lets try it out.";
+        string p = "Your purpose is to deliver pizzas to aliens. Lets try it out.";
         StartCoroutine(RollText(4, p));
     }
 
@@ -90,7 +90,7 @@ public class Tutorial : MonoBehaviour
         _tutorialText.text = "";
         string p = "You got a tip, Nice! Reach the tip goal in every level to advance.";
         StartCoroutine(RollText(4, p));
-        yield return new WaitForSeconds(1.5f); //make arrow apear
+        yield return new WaitForSeconds(0.5f); //make arrow apear
         _arrow.SetActive(true);
         yield return new WaitForSeconds(3);
         _arrow.SetActive(false);
