@@ -8,6 +8,7 @@ public class SpaceShip : MonoBehaviour
     private Rigidbody2D _rb;
     [SerializeField] private GameObject astronaut;
     private Astronaut _astronaut;
+    
 
      private void Awake()
     {
@@ -26,7 +27,7 @@ public class SpaceShip : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.transform.CompareTag("Meteor"))
+        if (collider.transform.CompareTag("Meteor")  && !Movement.isStunned)
         {
             _astronaut.Stun();
         }
