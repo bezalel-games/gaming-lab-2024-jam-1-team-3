@@ -30,17 +30,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _timer;
     [SerializeField] private GameObject _tipGameObject;
     public GameObject _rope;
-
     
-    [SerializeField] private float _startTime = 6;
+    [SerializeField] public float _startTime = 6;
    
     private bool _isPaused;
     private bool _gameStart;
     public float _customerPatience;
-   
-
     
-
     void Awake()
     {
         _customerPatience = 9;
@@ -62,7 +58,6 @@ public class GameManager : MonoBehaviour
         MenuPanel.SetActive(false);
         _currentTime = _levelTime;
         _levelInProgress = true;
-
     }
 
     void Update()
@@ -95,7 +90,7 @@ public class GameManager : MonoBehaviour
 
     public void AddScore(double tip)
     {
-        _tip += (float)Math.Round(tip * _tipFactor, 1);
+        _tip += (float)Math.Round(tip * _tipFactor, 0);
         Debug.Log(_tip);
         //add tip updater
         _tipBar.UpdateTip(_tip);
@@ -103,6 +98,7 @@ public class GameManager : MonoBehaviour
         {
             _levelInProgress = false;
             Debug.Log("YOU WIN!");
+              SceneManager.LoadScene("WIN");
         }
     }
     public void SpawnLevelStartGame() 

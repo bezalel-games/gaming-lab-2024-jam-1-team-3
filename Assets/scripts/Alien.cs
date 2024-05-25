@@ -29,7 +29,7 @@ public class Alien : MonoBehaviour
     private void RequestPizza()
     {
         thoughtBubble.SetActive(true);
-        StartCoroutine(ChangeBubbleColorOverTime(GameManager.Instance._customerPatience)); 
+        StartCoroutine(ChangeBubbleColorOverTime(9)); //TODO GameManager.Instance._customerPatience)); 
     }
 
     private IEnumerator ChangeBubbleColorOverTime(float patience)
@@ -48,6 +48,8 @@ public class Alien : MonoBehaviour
     {
         thoughtBubble.SetActive(false);
     }
+    
+    
 }
 
 

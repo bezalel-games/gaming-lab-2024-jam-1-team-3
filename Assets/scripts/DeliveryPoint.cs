@@ -8,7 +8,8 @@ using WaitForSeconds = UnityEngine.WaitForSeconds;
 
 public class DeliveryPoint : MonoBehaviour
 {
-    
+    private bool _inFlipOffSequence;
+    private bool _overwriteThoguhtBubble;
     private bool _isInside;
     private float _timeInside;
     [SerializeField] private float _requiredTime = 3f;
@@ -40,13 +41,11 @@ public class DeliveryPoint : MonoBehaviour
     private SpriteRenderer _haloSR;
     [SerializeField] private GameObject _transfer;
     private Animator _transferAnim;
-    private SpriteRenderer _transferSR;
     private static readonly int Time1 = Animator.StringToHash("Time");
 
 
     private void Awake()
     {
-        _transferSR = _transfer.GetComponent<SpriteRenderer>();
         _transferAnim = _transfer.GetComponent<Animator>();
         _sr = GetComponent<SpriteRenderer>();
         _haloSR = _halo.GetComponent<SpriteRenderer>();
@@ -59,9 +58,15 @@ public class DeliveryPoint : MonoBehaviour
     {
         _transferAnim.SetFloat(Time1, _requiredTime);
         _initialPatience = GameManager.Instance._customerPatience;
-        StartCoroutine(StartPizzaEvent());
+        StartCoroutine(TimeBeforeAliensSpawn());
         _patience = _initialPatience;
         RepositionInRect();
+    }
+
+    private IEnumerator TimeBeforeAliensSpawn()
+    {
+        yield return new WaitForSeconds(GameManager.Instance._startTime - 1.5f);
+        StartCoroutine(StartPizzaEvent());
     }
     private void Update()
     {
@@ -85,6 +90,7 @@ public class DeliveryPoint : MonoBehaviour
     }
     IEnumerator FlipOffSequence()
     {
+        _inFlipOffSequence = true;
         yield return new WaitForSeconds(0.3f);
         _sr.sprite = _sadMoon;
         _flipOff.SetActive(true);
@@ -92,6 +98,7 @@ public class DeliveryPoint : MonoBehaviour
         _sr.sprite = _closedMoon;
         _flipOff.SetActive(false);
         yield return new WaitForSeconds(0.3f);
+        _inFlipOffSequence = false;
         _alien.SetActive(false);
         StartCoroutine(StartPizzaEvent());
     }
@@ -129,6 +136,9 @@ public class DeliveryPoint : MonoBehaviour
     {
         if (other.CompareTag("Pizza") & _inEvent && !Movement.isStunned)
         {
+            _haloSR.enabled = true;
+            _overwriteThoguhtBubble = true;
+            _alienClass.HideThoughtBubble(); //hide indicator bubbles when doing a delivery
             _transfer.SetActive(true);
             _isInside = true;
             _timeInside += Time.deltaTime;
@@ -162,14 +172,25 @@ public class DeliveryPoint : MonoBehaviour
         _sr.sprite = _closedMoon;
         StartCoroutine(StartPizzaEvent());
     }
-
     private void OnTriggerExit2D(Collider2D other)
     {
-        _haloSR.enabled = false;
+        if (_overwriteThoguhtBubble && !_inFlipOffSequence)
+        {
+            _alienClass.thoughtBubble.SetActive(true);
+        }
+
+        StartCoroutine(HaloCoolDown());
+       // _haloSR.enabled = false;
         _isInside = false;
         _timeInside = 0;
         _transfer.SetActive(false);
         _deliveryTimeIndicator.fillAmount = _timeInside;
+    }
+
+    private IEnumerator HaloCoolDown()
+    {
+        yield return new WaitForSeconds(0.3f);
+        _haloSR.enabled = false;
     }
 
     private void RepositionInRect()
