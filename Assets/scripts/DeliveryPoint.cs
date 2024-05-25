@@ -178,7 +178,10 @@ public class DeliveryPoint : MonoBehaviour
             _alienClass.thoughtBubble.SetActive(true);
         }
 
-        StartCoroutine(HaloCoolDown());
+        if (isActiveAndEnabled)
+        {
+            StartCoroutine(HaloCoolDown());
+        }
        // _haloSR.enabled = false;
         _isInside = false;
         _timeInside = 0;

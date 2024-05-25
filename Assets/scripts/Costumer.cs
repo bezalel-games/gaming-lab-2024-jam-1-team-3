@@ -101,7 +101,7 @@ public class Costumer : MonoBehaviour
 
     private void RequestPizza()
     {
-        Debug.Log("Starting Costumer Pizza event");
+        //Debug.Log("Starting Costumer Pizza event");
         _inEvent = true;
         _alien.SetActive(true);
     }
@@ -150,7 +150,6 @@ public class Costumer : MonoBehaviour
         {
             _alienClass.thoughtBubble.SetActive(true);
         }
-
         // _haloSR.enabled = false;
         _isInside = false;
         _timeInside = 0;

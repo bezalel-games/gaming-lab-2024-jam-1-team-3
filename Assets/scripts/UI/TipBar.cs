@@ -40,7 +40,6 @@ public class TipBar : MonoBehaviour
         _currText.text = "0";
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (_previousTip <= _currentTip)
