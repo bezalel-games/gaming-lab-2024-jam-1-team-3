@@ -1,4 +1,5 @@
 
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,9 +16,14 @@ public class TipBar : MonoBehaviour
 
     public void UpdateTip(float tip)
     {
+        StartCoroutine(IncreaseBar(tip));
+    }
+
+    private IEnumerator IncreaseBar(float tip)
+    {
+        yield return new WaitForSeconds(1f);
         _currentTip = tip;
         _currText.text = string.Format("{0:G}", _currentTip);
-        //_currText.text = string.Format(_currentTip);
     }
 
     private void Awake()

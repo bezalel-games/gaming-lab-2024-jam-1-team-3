@@ -8,7 +8,7 @@ public class Costumer : MonoBehaviour
     private bool _inFlipOffSequence;
     private bool _overwriteThoguhtBubble;
 
-
+    [SerializeField] private MoneyMaker _omryParticles;
     [SerializeField] private GameObject _thoughtBubble;
     private bool _isInside;
     private float _timeInside;
@@ -108,7 +108,8 @@ public class Costumer : MonoBehaviour
     private IEnumerator PizzeDelivered()
     {
         _transfer.SetActive(false);
-        _ps.Play(); 
+        // _ps.Play(); 
+        _omryParticles.CreateSplash();
         _inEvent = false;
         GameManager.Instance.AddScore(Math.Max(_patience, 0));
         _patience = _initialPatience;

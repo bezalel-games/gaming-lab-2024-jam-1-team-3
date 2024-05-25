@@ -23,6 +23,7 @@ public class DeliveryPoint : MonoBehaviour
     [SerializeField] private Sprite _closedMoon;
     [SerializeField] private Sprite _happyMoon;
     [SerializeField] private Sprite _sadMoon;
+
     
     //delivery time parameters
     [SerializeField] private GameObject _deliveryTimeGameObject;
@@ -33,8 +34,7 @@ public class DeliveryPoint : MonoBehaviour
     
     
     //Status indicators
-    [SerializeField] private GameObject _particles;
-    private ParticleSystem _ps;
+    [SerializeField] private MoneyMaker _omryParticles;
     private SpriteRenderer _sr;
     [SerializeField] private GameObject _flipOff;
     [SerializeField] private GameObject _halo;
@@ -49,7 +49,6 @@ public class DeliveryPoint : MonoBehaviour
         _transferAnim = _transfer.GetComponent<Animator>();
         _sr = GetComponent<SpriteRenderer>();
         _haloSR = _halo.GetComponent<SpriteRenderer>();
-        _ps = _particles.GetComponent<ParticleSystem>();
         _alienClass = _alien.GetComponent<Alien>();
         _deliveryTimeIndicator = _deliveryTimeGameObject.GetComponent<Image>();
     }
@@ -162,7 +161,7 @@ public class DeliveryPoint : MonoBehaviour
     private IEnumerator PizzeDelivered()
     {
         _transfer.SetActive(false);
-        _ps.Play();
+        _omryParticles.CreateSplash();
         _inEvent = false;
         GameManager.Instance.AddScore(Math.Max(_patience, 0));
         _patience = _initialPatience;
