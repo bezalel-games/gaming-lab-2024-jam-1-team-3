@@ -7,6 +7,6 @@ public class PlayAgain : MonoBehaviour
 {
     public void OnPlayButtonClick()
     {
-        SceneManager.LoadScene("Programmers");
+        SceneManager.LoadScene("Transition");
     }
 }

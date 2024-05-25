@@ -14,12 +14,14 @@ public class Astronaut : MonoBehaviour
     private Movement _movement;
     private SpriteRenderer astronautSpriteRenderer;
     public SpriteRenderer spaceshipSpriteRenderer; 
+    private CameraShake cameraShake;
 
      private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
         _movement = movement.GetComponent<Movement>();
         astronautSpriteRenderer = GetComponent<SpriteRenderer>();
+        cameraShake = Camera.main.GetComponent<CameraShake>();
     }
 
 
@@ -44,6 +46,7 @@ public class Astronaut : MonoBehaviour
         {
             Stun();
         }
+            
     }
 
     public void Stun()
@@ -51,6 +54,7 @@ public class Astronaut : MonoBehaviour
         _movement.StunMovement();
         isStunned = true;
         stunTimer = stunDuration;
+        cameraShake.TriggerShake();
        StartCoroutine(Blink()); // Start blinking coroutine for both astronaut and spaceship
     }
 
