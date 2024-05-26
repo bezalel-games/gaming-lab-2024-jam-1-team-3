@@ -151,9 +151,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thoughtBubble: {fileID: 2688008002980297370}
   bubbleRenderer: {fileID: 2863650932811128818}
-  _sprite1: {fileID: 21300000, guid: a3306be6fbe1dd24eba5f4b961630953, type: 3}
-  _sprite2: {fileID: 21300000, guid: 5e4fe887456d6184e85bb4b50144a087, type: 3}
-  _sprite3: {fileID: 21300000, guid: 9f940fc7c0757d14e8927ff5c993ddc1, type: 3}
+  _sprite1: {fileID: 21300000, guid: 53cabb3332e31f24a8d58455e94da742, type: 3}
+  _sprite2: {fileID: 21300000, guid: 0675620d2b25d1a46bf6056fadb77f2a, type: 3}
+  _sprite3: {fileID: 21300000, guid: 7546964efc13ff34abef3676f3f17c63, type: 3}
 --- !u!212 &1631065177638057656
 SpriteRenderer:
   m_ObjectHideFlags: 0
