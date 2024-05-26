@@ -5,7 +5,7 @@ using UnityEngine;
 public class StartAstronaut : MonoBehaviour
 {
     private const string HTML_ALPHA = "<color=#00000000>";
-    [SerializeField] private float _startTime = 6;
+    [SerializeField] private float _startTime;
     private TextMeshProUGUI _startText;
     private GameObject _astronautStart;
 
@@ -18,6 +18,7 @@ public class StartAstronaut : MonoBehaviour
 
     private void Start()
     {
+        _startTime = GameManager.Instance._startTime;
         _startText.text = "Your tip goal for today is: " + GameManager.Instance.getTipGoal() + "$";
         StartCoroutine(StartAnimation());
     }
@@ -28,7 +29,7 @@ public class StartAstronaut : MonoBehaviour
         StartCoroutine(RollText(_startTime/2,_startText.text ));
         yield return new WaitForSeconds(_startTime);
         _astronautStart.SetActive(false);
-        yield return new WaitForSeconds(3);
+       // yield return new WaitForSeconds(3);
         GameManager.Instance.SpawnLevelStartGame();
     }
     private IEnumerator RollText(float animationTime, string p)

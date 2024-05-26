@@ -1,8 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-using UnityEngine;
 
 public class Astronaut : MonoBehaviour
 {
@@ -12,12 +10,14 @@ public class Astronaut : MonoBehaviour
     private float stunTimer = 0f;
     [SerializeField] private GameObject movement;
     private Movement _movement;
+    private SpriteRenderer astronautSpriteRenderer;
+    public SpriteRenderer spaceshipSpriteRenderer; 
 
      private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
         _movement = movement.GetComponent<Movement>();
-
+        astronautSpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
 
@@ -29,7 +29,8 @@ public class Astronaut : MonoBehaviour
                     if (stunTimer <= 0)
                     {
                         isStunned = false;
-                        GetComponent<SpriteRenderer>().color = Color.white; // Reset color to white
+                        astronautSpriteRenderer.color = Color.white; // Reset color to white
+                        spaceshipSpriteRenderer.color = Color.white; // Reset the color
                     }
                     return;
                 }
@@ -37,7 +38,7 @@ public class Astronaut : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.transform.CompareTag("Meteor"))
+        if (collider.transform.CompareTag("Meteor") && !Movement.isStunned)
         {
             Stun();
         }
@@ -48,7 +49,24 @@ public class Astronaut : MonoBehaviour
         _movement.StunMovement();
         isStunned = true;
         stunTimer = stunDuration;
-        GetComponent<SpriteRenderer>().color = Color.red;   
+       StartCoroutine(Blink()); // Start blinking coroutine for both astronaut and spaceship
     }
+
+    private IEnumerator Blink()
+    {
+        Color originalColor = astronautSpriteRenderer.color;
+        Color stunColor = Color.red;
+
+        while (stunTimer > 0)
+        {
+            astronautSpriteRenderer.color = astronautSpriteRenderer.color == originalColor ? stunColor : originalColor;
+            spaceshipSpriteRenderer.color = spaceshipSpriteRenderer.color == originalColor ? stunColor : originalColor;
+            yield return new WaitForSeconds(0.25f); // the interval for blinking speed
+        }
+
+        astronautSpriteRenderer.color = originalColor; 
+        spaceshipSpriteRenderer.color = originalColor; 
+    }
+
 }
 
