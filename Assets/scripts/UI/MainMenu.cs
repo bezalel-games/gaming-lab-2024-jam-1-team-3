@@ -8,6 +8,7 @@ public class NewBehaviourScript : MonoBehaviour
     public void OnPlayButtonClick()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("Transition");
+        
     }
 }

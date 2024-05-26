@@ -31,7 +31,7 @@ public class Tutorial : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            SceneManager.LoadScene("Programmers");
+            SceneManager.LoadScene("Transition");
         }
         if (!_gotTip && _phase == 2 && GameManager.Instance.getTip() > 0)
         {
@@ -114,7 +114,7 @@ public class Tutorial : MonoBehaviour
         string s = "GOOD LUCK!";
         StartCoroutine(RollText(1, s));
         yield return new WaitForSeconds(3);
-        SceneManager.LoadScene("Programmers");
+        SceneManager.LoadScene("Transition");
     }
 
 }
