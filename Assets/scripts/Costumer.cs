@@ -37,6 +37,8 @@ public class Costumer : MonoBehaviour
     [SerializeField] private GameObject _transfer;
     private Animator _transferAnim;
     private static readonly int Time1 = Animator.StringToHash("Time");
+    [SerializeField] private SpriteRenderer _haloSR;
+    [SerializeField] private GameObject _infaltingBubble;
 
     
     private void Awake()
@@ -96,15 +98,11 @@ public class Costumer : MonoBehaviour
     {
         yield return new WaitForSeconds(0.7f);
         _sr.sprite = _openShip;
-        RequestPizza();
-    }
-
-    private void RequestPizza()
-    {
-        //Debug.Log("Starting Costumer Pizza event");
-        _inEvent = true;
         _alien.SetActive(true);
+        yield return new WaitForSeconds(1);
+        _inEvent = true;
     }
+    
     private IEnumerator PizzeDelivered()
     {
         _transfer.SetActive(false);
@@ -119,10 +117,19 @@ public class Costumer : MonoBehaviour
         _sr.sprite = _closedShip;
         _cm.EndEvent();
     }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Pizza") && !Movement.isStunned)
+        {
+            _haloSR.enabled = true;
+        }
+    }
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Pizza") & _inEvent & !Movement.isStunned)
         {
+            _haloSR.enabled = true;
             _overwriteThoguhtBubble = true;
             _alienClass.HideThoughtBubble(); //hide indicator bubbles when doing a delivery
             _isInside = true;
@@ -150,10 +157,24 @@ public class Costumer : MonoBehaviour
         {
             _alienClass.thoughtBubble.SetActive(true);
         }
-        // _haloSR.enabled = false;
+        
+        if (isActiveAndEnabled)
+        {
+            if (GameManager.Instance.getTip() < GameManager.Instance.getTipGoal())
+            {
+                StartCoroutine(HaloCoolDown());
+            }
+        }
+        
         _isInside = false;
         _timeInside = 0;
         _transfer.SetActive(false);
         _deliveryTimeIndicator.fillAmount = _timeInside;
+    }
+    
+    private IEnumerator HaloCoolDown()
+    {
+        yield return new WaitForSeconds(0.2f);
+        _haloSR.enabled = false;
     }
 }
