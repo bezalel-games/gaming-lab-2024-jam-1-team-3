@@ -79,7 +79,7 @@ public class Tutorial : MonoBehaviour
     {
         yield return new WaitForSeconds(4.5f);
         _tutorialText.text = "";
-        string p = "Your purpose is to deliver pizzas to aliens. Lets try it out.";
+        string p = "Your purpose is to deliver pizzas to aliens. Let's try it out.";
         StartCoroutine(RollText(4, p));
     }
 
@@ -100,7 +100,7 @@ public class Tutorial : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         _tutorialText.text = "";
-        string s = "Oh, I forgot to tell you, there are ASTEROIDS!";
+        string s = "Oh, I forgot to tell you, there are ASTROIDS!";
         StartCoroutine(RollText(4, s));
         yield return new WaitForSeconds(2);
         _meteors.SetActive(true);
