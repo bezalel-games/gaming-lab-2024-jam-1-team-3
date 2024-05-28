@@ -31,7 +31,7 @@ public class Tutorial : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            SceneManager.LoadScene("Transition");
+            TransitionToNextLevel();
         }
         if (!_gotTip && _phase == 2 && GameManager.Instance.getTip() > 0)
         {
@@ -114,7 +114,17 @@ public class Tutorial : MonoBehaviour
         string s = "GOOD LUCK!";
         StartCoroutine(RollText(1, s));
         yield return new WaitForSeconds(3);
-        SceneManager.LoadScene("Transition");
+        TransitionToNextLevel();
     }
+    
+    public void TransitionToNextLevel()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        PlayerPrefs.SetString("LastScene", currentScene.name); 
+        PlayerPrefs.Save(); 
+        
+        SceneManager.LoadScene("Transition");
+    } 
+
 
 }

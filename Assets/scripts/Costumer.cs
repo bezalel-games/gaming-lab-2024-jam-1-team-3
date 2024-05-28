@@ -47,7 +47,7 @@ public class Costumer : MonoBehaviour
         _ps = _particles.GetComponent<ParticleSystem>();
         _sr = GetComponent<SpriteRenderer>();
         _cm = GetComponent<CostumerMovement>();
-        _initialPatience = 9 ;//TODO GameManager.Instance._customerPatience;
+        _initialPatience = GameManager.Instance._customerPatience;
         _alienClass = _alien.GetComponent<Alien>();
         _deliveryTimeIndicator = _deliveryTimeGameObject.GetComponent<Image>();
     }
