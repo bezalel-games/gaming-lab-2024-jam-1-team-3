@@ -30,7 +30,7 @@ public class DeliveryPoint : MonoBehaviour
     private Image _deliveryTimeIndicator;
     private bool _inEvent;
     private float _initialPatience;
-    private float _patience;
+    public float _patience;
     
     
     //Status indicators
@@ -184,7 +184,6 @@ public class DeliveryPoint : MonoBehaviour
                 StartCoroutine(HaloCoolDown());
             }
         }
-       // _haloSR.enabled = false;
         _isInside = false;
         _timeInside = 0;
         _transfer.SetActive(false);

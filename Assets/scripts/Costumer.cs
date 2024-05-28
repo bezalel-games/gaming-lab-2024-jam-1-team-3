@@ -22,7 +22,7 @@ public class Costumer : MonoBehaviour
     private Image _deliveryTimeIndicator;
     private bool _inEvent;
     private float _initialPatience;
-    private float _patience;
+    public float _patience;
     
     [SerializeField] private Sprite _openShip;
     [SerializeField] private Sprite _closedShip;
