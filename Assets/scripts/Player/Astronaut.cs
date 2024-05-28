@@ -49,6 +49,7 @@ public class Astronaut : MonoBehaviour
 
     public void Stun()
     {
+        Audio.AudioController.PlayCommand(Audio.AudioController._meteorHit);
         _movement.StunMovement();
         isStunned = true;
         stunTimer = stunDuration;

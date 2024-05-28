@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -21,6 +23,7 @@ public class GameManager : MonoBehaviour
     private bool _levelInProgress;
     private TextMeshProUGUI _timerText;
     [SerializeField] private GameObject MenuPanel;
+    private bool _tenSecondsFlag = true;
     
     //GameObjects we need in game manager
     // [SerializeField] private GameObject _moons;
@@ -35,11 +38,11 @@ public class GameManager : MonoBehaviour
    
     private bool _isPaused;
     private bool _gameStart;
-    public float _customerPatience;
+    public float _customerPatience = 9;
     
     void Awake()
     {
-        _customerPatience = 9;
+        //_customerPatience = 9;
         if (Instance == null)
         {
             Instance = this;
@@ -71,16 +74,38 @@ public class GameManager : MonoBehaviour
             }
             if (_currentTime <= 0)
             {
+                //TODO add coroutine to loose and win game
+                Audio.AudioController.PlayCommand(Audio.AudioController._looseSound);
+
                 _currentTime = 0;
                 _levelInProgress = false;
                 SceneManager.LoadScene("GameOver");
                 
                 Debug.Log("Time's up! YOU LOSE!");
             }
+
+            if (_currentTime <= 10 && _tenSecondsFlag)
+            {
+                _tenSecondsFlag = false;
+                StartCoroutine(TenSecondsLeft());
+            }
         }
     }
 
-   private void UpdateTimerUI()
+    private IEnumerator TenSecondsLeft()
+    {
+        var textColor = _timerText.color;
+        Audio.AudioController.PlayCommand(Audio.AudioController._10SecondsLeft);
+        for (int i = 0; i < 3; i++)
+        {
+            _timerText.color = Color.red;
+            yield return new WaitForSeconds(0.5f);
+            _timerText.color = textColor;
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
+
+    private void UpdateTimerUI()
     {
         int minutes = Mathf.FloorToInt(_currentTime / 60);
         int seconds = Mathf.FloorToInt(_currentTime % 60);
@@ -96,6 +121,7 @@ public class GameManager : MonoBehaviour
         _tipBar.UpdateTip(_tip);
         if (_tip >= _tipGoal)
         {
+            Audio.AudioController.PlayCommand(Audio.AudioController._winSound);
             _levelInProgress = false;
             Debug.Log("YOU WIN!");
               SceneManager.LoadScene("WIN");
@@ -106,9 +132,7 @@ public class GameManager : MonoBehaviour
         //TODO add countdown or something
         _gameStart = true;
         _LevelObjects.SetActive(true);
-        // _moons.SetActive(true);
-        // _meteors.SetActive(true);
-        // _costumers.SetActive(true);
+   
     }
 
     public float getTipGoal()

@@ -47,7 +47,7 @@ public class Costumer : MonoBehaviour
         _ps = _particles.GetComponent<ParticleSystem>();
         _sr = GetComponent<SpriteRenderer>();
         _cm = GetComponent<CostumerMovement>();
-        _initialPatience = 9 ;//TODO GameManager.Instance._customerPatience;
+        _initialPatience = GameManager.Instance._customerPatience;
         _alienClass = _alien.GetComponent<Alien>();
         _deliveryTimeIndicator = _deliveryTimeGameObject.GetComponent<Image>();
     }
@@ -73,6 +73,7 @@ public class Costumer : MonoBehaviour
     }
     IEnumerator FlipOffSequence()
     {
+        Audio.AudioController.PlayCommand(Audio.AudioController._pizzaDeliveryFailed);
         _inFlipOffSequence = true;
         yield return new WaitForSeconds(0.3f);
         _sr.sprite = _sadShip;
@@ -99,6 +100,7 @@ public class Costumer : MonoBehaviour
         yield return new WaitForSeconds(0.7f);
         _sr.sprite = _openShip;
         _alien.SetActive(true);
+        Audio.AudioController.PlayCommand(Audio.AudioController._alienRequestsPizza);
         yield return new WaitForSeconds(1);
         _inEvent = true;
     }
@@ -106,13 +108,13 @@ public class Costumer : MonoBehaviour
     private IEnumerator PizzeDelivered()
     {
         _transfer.SetActive(false);
-        // _ps.Play(); 
         _omryParticles.CreateSplash();
         _inEvent = false;
         GameManager.Instance.AddScore(Math.Max(_patience, 0));
         _patience = _initialPatience;
         _alien.SetActive(false);
         _sr.sprite = _happyShip;
+        Audio.AudioController.PlayCommand(Audio.AudioController._pizzaDeliverySuccess);
         yield return new WaitForSeconds(1.5f);
         _sr.sprite = _closedShip;
         _cm.EndEvent();

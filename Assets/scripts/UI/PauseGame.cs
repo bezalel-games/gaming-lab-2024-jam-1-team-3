@@ -13,13 +13,13 @@ public class PauseGame : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            Audio.AudioController.PlayCommand(Audio.AudioController._buttonPress);
             TogglePause();
         }
     }
 
 
     public void Pause()
-        //TODO Move pause game to different script
     {
         _isPaused = true;
         Time.timeScale = 0f; // Stop time to pause the game

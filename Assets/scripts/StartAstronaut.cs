@@ -35,6 +35,7 @@ public class StartAstronaut : MonoBehaviour
     private IEnumerator RollText(float animationTime, string p)
     {
         //Taken from this video: https://www.youtube.com/watch?v=jTPOCglHejE&ab_channel=SasquatchBStudios 
+        Audio.AudioController.PlayCommand(Audio.AudioController._astroBossTalking);
         _startText.text = "";
         string originalText = p;
         string displayText;

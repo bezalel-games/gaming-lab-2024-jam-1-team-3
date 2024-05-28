@@ -45,6 +45,7 @@ public class Tutorial : MonoBehaviour
         _phase++;
 
         //Taken from this video: https://www.youtube.com/watch?v=jTPOCglHejE&ab_channel=SasquatchBStudios 
+        Audio.AudioController.PlayCommand(Audio.AudioController._astroBossTalking);
         _tutorialText.text = "";
         string originalText = p;
         string displayText;

@@ -89,6 +89,7 @@ public class DeliveryPoint : MonoBehaviour
     }
     IEnumerator FlipOffSequence()
     {
+        Audio.AudioController.PlayCommand(Audio.AudioController._pizzaDeliveryFailed);
         _inFlipOffSequence = true;
         yield return new WaitForSeconds(0.3f);
         _sr.sprite = _sadMoon;
@@ -115,6 +116,7 @@ public class DeliveryPoint : MonoBehaviour
         yield return new WaitForSeconds(Random.Range(2,6));
         _sr.sprite = _openMoon; 
         _alien.SetActive(true);
+        Audio.AudioController.PlayCommand(Audio.AudioController._alienRequestsPizza);
         yield return new WaitForSeconds(1);
         _inEvent = true;
     }
@@ -163,6 +165,7 @@ public class DeliveryPoint : MonoBehaviour
         _patience = _initialPatience;
         _alien.SetActive(false);
         _sr.sprite = _happyMoon;
+        Audio.AudioController.PlayCommand(Audio.AudioController._pizzaDeliverySuccess);
         yield return new WaitForSeconds(1.5f);
         _sr.sprite = _closedMoon;
         StartCoroutine(StartPizzaEvent());

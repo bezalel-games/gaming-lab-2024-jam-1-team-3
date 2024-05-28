@@ -25,6 +25,8 @@ public class MoneyMaker : MonoBehaviour
        }
    }
 
-  
-
+   private void Update()
+   {
+       if(Input.GetKeyDown(KeyCode.M)){CreateSplash();}
+   }
 }
