@@ -38,12 +38,6 @@ public class Meteors : MonoBehaviour
         StartCoroutine(InitializeMeteorWithDelay());
     }
 
-    void Update()
-    {
-        // Apply continuous rotation
-        //transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
-    }
-
     IEnumerator InitializeMeteorWithDelay()
     {
         while (true)

@@ -24,7 +24,6 @@ public class StartButton : MonoBehaviour
     
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("noa");
         transform.localScale = originalScale * scaleFactor;
     }
 

@@ -114,13 +114,9 @@ public class DeliveryPoint : MonoBehaviour
     {
         yield return new WaitForSeconds(Random.Range(2,6));
         _sr.sprite = _openMoon; 
-        RequestPizza();
-    }
-
-    private void RequestPizza()
-    {
-        _inEvent = true;
         _alien.SetActive(true);
+        yield return new WaitForSeconds(1);
+        _inEvent = true;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -180,7 +176,10 @@ public class DeliveryPoint : MonoBehaviour
 
         if (isActiveAndEnabled)
         {
-            StartCoroutine(HaloCoolDown());
+            if (GameManager.Instance.getTip() < GameManager.Instance.getTipGoal())
+            {
+                StartCoroutine(HaloCoolDown());
+            }
         }
        // _haloSR.enabled = false;
         _isInside = false;
@@ -191,7 +190,7 @@ public class DeliveryPoint : MonoBehaviour
 
     private IEnumerator HaloCoolDown()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.2f);
         _haloSR.enabled = false;
     }
 

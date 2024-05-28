@@ -9,6 +9,7 @@ public class Alien : MonoBehaviour
     [SerializeField] private Sprite _sprite1;
     [SerializeField] private Sprite _sprite2;
     [SerializeField] private Sprite _sprite3;
+    [SerializeField] private GameObject _infaltingBubble;
 
     private void Awake()
     {
@@ -18,7 +19,7 @@ public class Alien : MonoBehaviour
 
     private void OnEnable()
     {
-        RequestPizza();
+        StartCoroutine(RequestPizza());
     }
 
     private void OnDisable()
@@ -26,8 +27,11 @@ public class Alien : MonoBehaviour
         thoughtBubble.SetActive(false);
     }
 
-    private void RequestPizza()
+    private IEnumerator RequestPizza()
     {
+        _infaltingBubble.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        _infaltingBubble.SetActive(false);
         thoughtBubble.SetActive(true);
         StartCoroutine(ChangeBubbleColorOverTime(9)); //TODO GameManager.Instance._customerPatience)); 
     }
@@ -46,6 +50,7 @@ public class Alien : MonoBehaviour
 
     public void HideThoughtBubble()
     {
+        bubbleRenderer.sprite = null;
         thoughtBubble.SetActive(false);
     }
     
