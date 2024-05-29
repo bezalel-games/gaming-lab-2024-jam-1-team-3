@@ -301,7 +301,7 @@ MonoBehaviour:
   _pizzaDeliveryFailed: {fileID: 0}
   _pizzaDeliverySuccess: {fileID: 8300000, guid: a5c16a3b9b363334fb607b7ab2e3563c, type: 3}
   _alienRequestsPizza: {fileID: 0}
-  _10SecondsLeft: {fileID: 0}
+  _10SecondsLeft: {fileID: 8300000, guid: a3f8cb075598915488c1f0c1d786448c, type: 3}
   _winSound: {fileID: 0}
   _looseSound: {fileID: 0}
   _meteorHit: {fileID: 0}
@@ -2445,10 +2445,10 @@ Transform:
   - {fileID: 791746653}
   - {fileID: 966802558}
   - {fileID: 1990011387}
-  - {fileID: 1889877714}
   - {fileID: 1305683588}
   - {fileID: 539755182}
   - {fileID: 605625259}
+  - {fileID: 1881037182}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &680908734 stripped
@@ -7397,3 +7397,5 @@ SceneRoots:
   - {fileID: 112634930}
   - {fileID: 1907386022}
   - {fileID: 987683447}
+  - {fileID: 652760872}
+  - {fileID: 808228550}
