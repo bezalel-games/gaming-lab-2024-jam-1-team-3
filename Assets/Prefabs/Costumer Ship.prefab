@@ -110,6 +110,7 @@ MonoBehaviour:
   _requiredTime: 1
   _alien: {fileID: 8008809987043385299}
   _deliveryTimeGameObject: {fileID: 8354270550924052885}
+  _patience: 0
   _openShip: {fileID: 21300000, guid: b8e0f5cb32ce44a40b74327b7653b854, type: 3}
   _closedShip: {fileID: 21300000, guid: f19db57c23f36cc469e2efe65b4fd57b, type: 3}
   _happyShip: {fileID: 21300000, guid: c2942e3f4e8895744a946d361fce5e29, type: 3}
@@ -480,8 +481,8 @@ Transform:
   m_GameObject: {fileID: 5591241703171720555}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.123529576, y: 5.5176454, z: 8.844022}
-  m_LocalScale: {x: 1.4705882, y: 1.4705882, z: 1.4705882}
+  m_LocalPosition: {x: -2.34, y: 2.34, z: 8.844022}
+  m_LocalScale: {x: 1.4017918, y: 1.4017918, z: 1.4017918}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6093822700755105522}
