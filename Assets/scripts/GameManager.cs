@@ -122,7 +122,8 @@ public class GameManager : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         PlayerPrefs.SetString("LastScene", currentScene.name); // Save current scene name
         PlayerPrefs.Save(); // Make sure to save PlayerPrefs changes
-        SaveLevelTime(string currentScene.name, float _startTime - _timer);
+        float time = _startTime - _levelTime;
+        SaveLevelTime(currentScene.name,time);
 
         // Load your transition scene or whatever comes next
         SceneManager.LoadScene("Transition");
