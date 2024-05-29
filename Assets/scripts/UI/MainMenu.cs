@@ -9,12 +9,7 @@ public class NewBehaviourScript : MonoBehaviour
     {
         Audio.AudioController.PlayCommand(Audio.AudioController._buttonPress);
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Transition");
+        SceneManager.LoadScene("MainMenu");
     }
     
-    private IEnumerator PlayGame()
-    {
-        yield return new WaitForSeconds(Audio.AudioController._buttonPress.length);
-        SceneManager.LoadScene("Transition");
-    }
 }

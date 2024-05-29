@@ -44,7 +44,7 @@ public class TransitionScene : MonoBehaviour
 
     private IEnumerator WaitAndLoadScene(string sceneName)
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(3);
         SceneManager.LoadScene(sceneName); // Load the target scene
     }
 

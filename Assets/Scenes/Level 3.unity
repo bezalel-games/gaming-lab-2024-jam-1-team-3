@@ -218,6 +218,7 @@ GameObject:
   m_Component:
   - component: {fileID: 107277937}
   - component: {fileID: 107277939}
+  - component: {fileID: 107277941}
   - component: {fileID: 107277938}
   - component: {fileID: 107277940}
   m_Layer: 0
@@ -301,6 +302,29 @@ MonoBehaviour:
   simulating: 0
   gravity: 10
   solveIterations: 5
+--- !u!114 &107277941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107277936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcbd2e62a23f94ad9baddb0995e2e7b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pizzaDeliveryFailed: {fileID: 0}
+  _pizzaDeliverySuccess: {fileID: 0}
+  _alienRequestsPizza: {fileID: 0}
+  _10SecondsLeft: {fileID: 0}
+  _winSound: {fileID: 0}
+  _looseSound: {fileID: 0}
+  _meteorHit: {fileID: 0}
+  _astroBossTalking: {fileID: 0}
+  _engineSounds: {fileID: 0}
+  _buttonPress: {fileID: 0}
+  _transitionLevel: {fileID: 0}
 --- !u!1 &138460582
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,6 +439,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 6884769249837447161, guid: 090409adbc34c4c46b27f30a1dbe882c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 566036063}
+    - target: {fileID: 6884769249837447161, guid: 090409adbc34c4c46b27f30a1dbe882c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnPlayButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 6884769249837447161, guid: 090409adbc34c4c46b27f30a1dbe882c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayAgain, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 8614938031706079106, guid: 090409adbc34c4c46b27f30a1dbe882c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -495,10 +531,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7034469299958099367, guid: 090409adbc34c4c46b27f30a1dbe882c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8374842540348567627, guid: 090409adbc34c4c46b27f30a1dbe882c, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 566036063}
   m_SourcePrefab: {fileID: 100100000, guid: 090409adbc34c4c46b27f30a1dbe882c, type: 3}
 --- !u!1001 &167841265
 PrefabInstance:
@@ -1701,6 +1741,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &566036057 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8374842540348567627, guid: 090409adbc34c4c46b27f30a1dbe882c, type: 3}
+  m_PrefabInstance: {fileID: 151185847}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &566036063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566036057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64c2800b4d26847c180501ea9377bd25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &584261620
 GameObject:
   m_ObjectHideFlags: 0

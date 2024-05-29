@@ -219,6 +219,7 @@ GameObject:
   - component: {fileID: 107277937}
   - component: {fileID: 107277939}
   - component: {fileID: 107277938}
+  - component: {fileID: 107277941}
   - component: {fileID: 107277940}
   m_Layer: 0
   m_Name: Managers
@@ -301,6 +302,29 @@ MonoBehaviour:
   simulating: 0
   gravity: 10
   solveIterations: 5
+--- !u!114 &107277941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107277936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcbd2e62a23f94ad9baddb0995e2e7b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pizzaDeliveryFailed: {fileID: 0}
+  _pizzaDeliverySuccess: {fileID: 0}
+  _alienRequestsPizza: {fileID: 0}
+  _10SecondsLeft: {fileID: 0}
+  _winSound: {fileID: 0}
+  _looseSound: {fileID: 0}
+  _meteorHit: {fileID: 0}
+  _astroBossTalking: {fileID: 0}
+  _engineSounds: {fileID: 0}
+  _buttonPress: {fileID: 0}
+  _transitionLevel: {fileID: 0}
 --- !u!1 &138460582
 GameObject:
   m_ObjectHideFlags: 0
