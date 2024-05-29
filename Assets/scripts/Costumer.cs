@@ -32,19 +32,14 @@ public class Costumer : MonoBehaviour
     //Status indicators
     [SerializeField] private GameObject _flipOff;
     private SpriteRenderer _sr;
-    private ParticleSystem _ps;
     [SerializeField] private GameObject _particles;
     [SerializeField] private GameObject _transfer;
-    private Animator _transferAnim;
-    private static readonly int Time1 = Animator.StringToHash("Time");
     [SerializeField] private SpriteRenderer _haloSR;
     [SerializeField] private GameObject _infaltingBubble;
 
     
     private void Awake()
     {
-        _transferAnim = _transfer.GetComponent<Animator>();
-        _ps = _particles.GetComponent<ParticleSystem>();
         _sr = GetComponent<SpriteRenderer>();
         _cm = GetComponent<CostumerMovement>();
         _initialPatience = GameManager.Instance._customerPatience;
@@ -54,7 +49,6 @@ public class Costumer : MonoBehaviour
 
     void Start()
     {
-        _transferAnim.SetFloat(Time1, _requiredTime);
         _patience = _initialPatience;
     }
     private void Update()
@@ -137,8 +131,6 @@ public class Costumer : MonoBehaviour
             _isInside = true;
             _transfer.SetActive(true);
             _timeInside += Time.deltaTime;
-            //_deliveryTimeIndicator.fillAmount = _timeInside / _requiredTime;
-            
             if (_timeInside >= _requiredTime && _isInside)
             {
                 _timeInside = 0;
@@ -151,10 +143,6 @@ public class Costumer : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        // _isInside = false;
-        // _timeInside = 0;
-        // _deliveryTimeIndicator.fillAmount = _timeInside;
-        
         if (_overwriteThoguhtBubble && !_inFlipOffSequence)
         {
             _alienClass.thoughtBubble.SetActive(true);
@@ -167,7 +155,6 @@ public class Costumer : MonoBehaviour
                 StartCoroutine(HaloCoolDown());
             }
         }
-        
         _isInside = false;
         _timeInside = 0;
         _transfer.SetActive(false);
