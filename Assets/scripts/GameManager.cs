@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-    
+using System.Collections;
+using UnityEngine.UI;
 
 
 public class GameManager : MonoBehaviour
@@ -33,7 +34,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _timer;
     [SerializeField] private GameObject _tipGameObject;
     public GameObject _rope;
-    
     [SerializeField] public float _startTime = 6;
    
     private bool _isPaused;
@@ -124,9 +124,22 @@ public class GameManager : MonoBehaviour
             Audio.AudioController.PlayCommand(Audio.AudioController._winSound);
             _levelInProgress = false;
             Debug.Log("YOU WIN!");
-              SceneManager.LoadScene("WIN");
+            TransitionToNextLevel();
         }
     }
+    public void TransitionToNextLevel()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        PlayerPrefs.SetString("LastScene", currentScene.name); // Save current scene name
+        PlayerPrefs.Save(); // Make sure to save PlayerPrefs changes
+
+        // Load your transition scene or whatever comes next
+        SceneManager.LoadScene("Transition");
+    }
+  
+
+    
+    
     public void SpawnLevelStartGame() 
     {
         //TODO add countdown or something

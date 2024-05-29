@@ -7,8 +7,9 @@ public class PlayAgain : MonoBehaviour
 {
     public void OnPlayButtonClick()
     {
+        Time.timeScale = 1f;
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
         Audio.AudioController.PlayCommand(Audio.AudioController._buttonPress);
-        SceneManager.LoadScene("Transition");
     }
-    
 }
