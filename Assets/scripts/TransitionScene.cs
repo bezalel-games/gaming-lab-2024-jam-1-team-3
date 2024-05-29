@@ -17,7 +17,7 @@ public class TransitionScene : MonoBehaviour
         string lastSceneName = PlayerPrefs.GetString("LastScene", "DefaultSceneName");
         // Determine the next scene based on the last scene
         string nextSceneName = DetermineNextScene(lastSceneName);
-        SceneManager.LoadScene(nextSceneName);
+        LoadNextScene(nextSceneName);
         
     }
 
@@ -44,7 +44,7 @@ public class TransitionScene : MonoBehaviour
 
     private IEnumerator WaitAndLoadScene(string sceneName)
     {
-        yield return new WaitForSeconds(3); 
+        yield return new WaitForSeconds(4);
         SceneManager.LoadScene(sceneName); // Load the target scene
     }
 
