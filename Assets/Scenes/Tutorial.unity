@@ -274,7 +274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bca90dc9a70548649490d815b576813, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeOutAnimator: {fileID: 0}
+  fadeOutAnimator: {fileID: 1117209542}
   _tipFactor: 1
   _tipGoal: 30
   _levelTime: 90
@@ -571,7 +571,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.12561536, y: 0.00032934998}
+  m_ConnectedAnchor: {x: 0.12561536, y: 0.00032933793}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -818,7 +818,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.053591035, y: -0.000000050851863}
+  m_ConnectedAnchor: {x: 0.053591035, y: -0.000000045719396}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1233,7 +1233,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.08708555, y: -0.000000060645284}
+  m_ConnectedAnchor: {x: 0.08708555, y: -0.000000052305012}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -4344,7 +4344,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &1117209543
 Animator:
   serializedVersion: 5
@@ -4969,7 +4969,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.07368755, y: 0.00000000587006}
+  m_ConnectedAnchor: {x: 0.07368755, y: 0.000000012927197}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -5578,7 +5578,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.10048331, y: -0.00000017258493}
+  m_ConnectedAnchor: {x: 0.10048331, y: -0.00000016296156}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -6094,7 +6094,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.06531392, y: -0.000000018774509}
+  m_ConnectedAnchor: {x: 0.06531392, y: -0.000000012519329}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -6150,6 +6150,8 @@ MonoBehaviour:
   _moon: {fileID: 680908734}
   _arrow: {fileID: 375053599}
   _meteors: {fileID: 780893350}
+  fadeOutAnimator: {fileID: 1117209542}
+  fadeInAnimator: {fileID: 493280929}
 --- !u!1 &1871814044
 GameObject:
   m_ObjectHideFlags: 0
@@ -6709,7 +6711,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.080386795, y: -0.000000077435146}
+  m_ConnectedAnchor: {x: 0.080386795, y: -0.00000006973642}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0

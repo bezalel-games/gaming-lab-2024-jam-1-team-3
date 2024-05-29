@@ -13,6 +13,8 @@ public class Tutorial : MonoBehaviour
     private bool _gotTip;
     [SerializeField] private GameObject _arrow;
     [SerializeField] private GameObject _meteors;
+    public GameObject fadeOutAnimator;
+    public GameObject fadeInAnimator;
 
     private void Awake()
     {
@@ -22,6 +24,7 @@ public class Tutorial : MonoBehaviour
 
     void Start()
     {
+        fadeInAnimator.SetActive(true); 
         _tutorialText.text = "Hey there champ, we need you to deliver those pizzas again.";
         StartCoroutine(RollText(3, _tutorialText.text));
     }
@@ -124,8 +127,18 @@ public class Tutorial : MonoBehaviour
         PlayerPrefs.SetString("LastScene", currentScene.name); 
         PlayerPrefs.Save(); 
         
-        SceneManager.LoadScene("Transition");
+        StartCoroutine(PlayFadeOutAndLoadTransition());
     } 
+    private IEnumerator PlayFadeOutAndLoadTransition()
+    {
+        fadeOutAnimator.SetActive(true); 
+
+        // Wait until the fade out animation is complete
+        yield return new WaitForSeconds(0.5f); 
+
+        // After the animation completes, load the transition scene
+        SceneManager.LoadScene("Transition");
+    }
 
 
 }
