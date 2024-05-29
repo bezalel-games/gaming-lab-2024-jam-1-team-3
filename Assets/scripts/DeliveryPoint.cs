@@ -40,6 +40,7 @@ public class DeliveryPoint : MonoBehaviour
     private SpriteRenderer _haloSR;
     [SerializeField] private GameObject _transfer;
     private Animator _transferAnim;
+    private bool _transferSoundPlayed;
 
 
     private void Awake()
@@ -114,6 +115,7 @@ public class DeliveryPoint : MonoBehaviour
         _alien.SetActive(true);
         Audio.AudioController.PlayCommand(Audio.AudioController._alienRequestsPizza);
         yield return new WaitForSeconds(1);
+        _transferSoundPlayed = false;
         _inEvent = true;
     }
 
@@ -129,6 +131,7 @@ public class DeliveryPoint : MonoBehaviour
     {
         if (other.CompareTag("Pizza") & _inEvent && !Movement.isStunned)
         {
+            StartTransferSound();
             _haloSR.enabled = true;
             _overwriteThoguhtBubble = true;
             _alienClass.HideThoughtBubble(); //hide indicator bubbles when doing a delivery
@@ -145,8 +148,18 @@ public class DeliveryPoint : MonoBehaviour
         
         if (Movement.isStunned)
         {
+            Audio.AudioController._as.Stop();
             _transfer.SetActive(false);
             _timeInside = 0;
+        }
+    }
+
+    private void StartTransferSound()
+    {
+        if (!_transferSoundPlayed && !Movement.isStunned)
+        {
+            _transferSoundPlayed = true;
+            Audio.AudioController.PlayCommand(Audio.AudioController._transfersound);
         }
     }
 
@@ -168,16 +181,14 @@ public class DeliveryPoint : MonoBehaviour
     {
         if (_overwriteThoguhtBubble && !_inFlipOffSequence)
         {
+            Audio.AudioController._as.Stop();
             _alienClass.thoughtBubble.SetActive(true);
         }
-
-        if (isActiveAndEnabled)
+        if (GameManager.Instance.GetTip() < GameManager.Instance.GetTipGoal() && isActiveAndEnabled)
         {
-            if (GameManager.Instance.GetTip() < GameManager.Instance.GetTipGoal() && isActiveAndEnabled)
-            {
-                StartCoroutine(HaloCoolDown());
-            }
+            StartCoroutine(HaloCoolDown());
         }
+        _transferSoundPlayed = false;
         _isInside = false;
         _timeInside = 0;
         _transfer.SetActive(false);
