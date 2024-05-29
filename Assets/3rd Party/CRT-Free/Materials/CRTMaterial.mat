@@ -60,7 +60,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Overlay:
-        m_Texture: {fileID: 2800000, guid: 9d90fd2ef2021d049b77c8ec5650556d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3cc354a8b31694e54b9598919f5dcfac, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
@@ -95,7 +95,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _HorzFuzzOpt: 0.1
-    - _Intensity: 0.667
+    - _Intensity: 0.6
     - _MaxColorsBlue: 0
     - _MaxColorsGreen: 0
     - _MaxColorsRed: 0

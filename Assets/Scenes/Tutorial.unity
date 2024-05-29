@@ -3883,7 +3883,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _HorzFuzzOpt: 0.1
-    - _Intensity: 0.8
+    - _Intensity: 0.6
     - _MaxColorsBlue: 0
     - _MaxColorsGreen: 0
     - _MaxColorsRed: 0
@@ -6412,12 +6412,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1507462972839071257, guid: 91181b03c8413d642a9ebd54eb1a35e0, type: 3}
+      propertyPath: m_lineSpacing
+      value: -28.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507462972839071257, guid: 91181b03c8413d642a9ebd54eb1a35e0, type: 3}
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: -4231720326268586603, guid: 7e75c6a74700eb7418cfc41b18df347d, type: 2}
     - target: {fileID: 1507462972839071257, guid: 91181b03c8413d642a9ebd54eb1a35e0, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507462972839071257, guid: 91181b03c8413d642a9ebd54eb1a35e0, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507462972839071257, guid: 91181b03c8413d642a9ebd54eb1a35e0, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1507462972839071257, guid: 91181b03c8413d642a9ebd54eb1a35e0, type: 3}
       propertyPath: m_hasFontAssetChanged
@@ -6427,6 +6439,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 8aab726cf39d22f4c87d5d23f8ca952f, type: 3}
+    - target: {fileID: 5179056940953966317, guid: 91181b03c8413d642a9ebd54eb1a35e0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5455134563335736060, guid: 91181b03c8413d642a9ebd54eb1a35e0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.23666877
