@@ -407,6 +407,10 @@ PrefabInstance:
       propertyPath: m_RenderMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 675959564404944794, guid: 090409adbc34c4c46b27f30a1dbe882c, type: 3}
+      propertyPath: m_Color.a
+      value: 0.9843137
+      objectReference: {fileID: 0}
     - target: {fileID: 6572214741893763965, guid: 090409adbc34c4c46b27f30a1dbe882c, type: 3}
       propertyPath: m_Name
       value: UI
