@@ -25,13 +25,6 @@ public class TipBar : MonoBehaviour
         _currentTip = tip;
         _currText.text = string.Format("{0:G}", _currentTip);
     }
-
-    // private void Awake()
-    // {
-    //     _goalText = transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
-    //     _currText = transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>();
-    // }
-
     void Start()
     {
         _tipGoal = GameManager.Instance.GetTipGoal();
