@@ -277,7 +277,7 @@ MonoBehaviour:
   fadeOutAnimator: {fileID: 213828657}
   _tipFactor: 0.8
   _tipGoal: 30
-  _levelTime: 25
+  _levelTime: 35
   MenuPanel: {fileID: 2011661280}
   _LevelObjects: {fileID: 1057004316}
   _timer: {fileID: 1642731096}
@@ -436,6 +436,10 @@ PrefabInstance:
     - target: {fileID: 1415169475767841406, guid: 090409adbc34c4c46b27f30a1dbe882c, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 88.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551485919505028349, guid: 090409adbc34c4c46b27f30a1dbe882c, type: 3}
+      propertyPath: m_text
+      value: 0:35
       objectReference: {fileID: 0}
     - target: {fileID: 5141062993555549914, guid: 090409adbc34c4c46b27f30a1dbe882c, type: 3}
       propertyPath: m_fontSize
