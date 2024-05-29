@@ -32,7 +32,7 @@ public class TransitionScene : MonoBehaviour
             case "Level 2":
                 return "Level 3";
             case "Level 3":
-                return "WinScene";
+                return "WIN";
             default:
                 return "MainMenu"; // Go back to main menu if there's an error
         }
