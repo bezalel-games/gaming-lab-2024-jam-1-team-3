@@ -413,7 +413,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e043f9bae5774e338f5a48878a552da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleFactor: 1.2
 --- !u!114 &559674733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -502,6 +501,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcbd2e62a23f94ad9baddb0995e2e7b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _as: {fileID: 0}
+  _transfersound: {fileID: 0}
   _pizzaDeliveryFailed: {fileID: 0}
   _pizzaDeliverySuccess: {fileID: 0}
   _alienRequestsPizza: {fileID: 0}
@@ -510,7 +511,6 @@ MonoBehaviour:
   _looseSound: {fileID: 0}
   _meteorHit: {fileID: 0}
   _astroBossTalking: {fileID: 0}
-  _engineSounds: {fileID: 0}
   _buttonPress: {fileID: 0}
   _transitionLevel: {fileID: 0}
 --- !u!4 &719256464
@@ -660,10 +660,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
