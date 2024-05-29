@@ -24,6 +24,7 @@ public class Tutorial : MonoBehaviour
 
     void Start()
     {
+        fadeOutAnimator.SetActive(false); 
         fadeInAnimator.SetActive(true); 
         _tutorialText.text = "Hey there champ, we need you to deliver those pizzas again.";
         StartCoroutine(RollText(3, _tutorialText.text));
