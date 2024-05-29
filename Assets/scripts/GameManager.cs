@@ -1,11 +1,8 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
-using UnityEngine.UI;
 
 
 public class GameManager : MonoBehaviour
@@ -27,9 +24,6 @@ public class GameManager : MonoBehaviour
     private bool _tenSecondsFlag = true;
     
     //GameObjects we need in game manager
-    // [SerializeField] private GameObject _moons;
-    // [SerializeField] private GameObject _meteors;
-    // [SerializeField] private GameObject _costumers;
     [SerializeField] private GameObject _LevelObjects;
     [SerializeField] private GameObject _timer;
     [SerializeField] private GameObject _tipGameObject;
@@ -42,7 +36,6 @@ public class GameManager : MonoBehaviour
     
     void Awake()
     {
-        //_customerPatience = 9;
         if (Instance == null)
         {
             Instance = this;
@@ -76,14 +69,13 @@ public class GameManager : MonoBehaviour
             {
                 //TODO add coroutine to loose and win game
                 Audio.AudioController.PlayCommand(Audio.AudioController._looseSound);
-
                 _currentTime = 0;
                 _levelInProgress = false;
+                Scene currentScene = SceneManager.GetActiveScene();
+                PlayerPrefs.SetString("LastScene", currentScene.name); // Save current scene name
+                PlayerPrefs.Save();
                 SceneManager.LoadScene("GameOver");
-                
-                Debug.Log("Time's up! YOU LOSE!");
             }
-
             if (_currentTime <= 10 && _tenSecondsFlag)
             {
                 _tenSecondsFlag = false;
@@ -117,7 +109,6 @@ public class GameManager : MonoBehaviour
     {
         _tip += (float)Math.Round(tip * _tipFactor, 0);
         Debug.Log(_tip);
-        //add tip updater
         _tipBar.UpdateTip(_tip);
         if (_tip >= _tipGoal)
         {
@@ -136,10 +127,6 @@ public class GameManager : MonoBehaviour
         // Load your transition scene or whatever comes next
         SceneManager.LoadScene("Transition");
     }
-  
-
-    
-    
     public void SpawnLevelStartGame() 
     {
         //TODO add countdown or something
@@ -148,18 +135,13 @@ public class GameManager : MonoBehaviour
    
     }
 
-    public float getTipGoal()
+    public float GetTipGoal()
     {
         return _tipGoal;
     }
-    public float getTip()
+    public float GetTip()
     {
         return _tip;
-    }
-
-    public float getCostumerPatience()
-    {
-        return _customerPatience;
     }
 }
 

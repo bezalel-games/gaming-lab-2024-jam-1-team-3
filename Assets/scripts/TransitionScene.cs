@@ -32,7 +32,7 @@ public class TransitionScene : MonoBehaviour
             case "Level 2":
                 return "Level 3";
             case "Level 3":
-                return "WinScene";
+                return "WIN";
             default:
                 return "MainMenu"; // Go back to main menu if there's an error
         }
@@ -44,7 +44,7 @@ public class TransitionScene : MonoBehaviour
 
     private IEnumerator WaitAndLoadScene(string sceneName)
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(3);
         SceneManager.LoadScene(sceneName); // Load the target scene
     }
 

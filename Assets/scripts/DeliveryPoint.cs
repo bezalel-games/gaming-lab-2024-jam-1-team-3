@@ -179,7 +179,7 @@ public class DeliveryPoint : MonoBehaviour
 
         if (isActiveAndEnabled)
         {
-            if (GameManager.Instance.getTip() < GameManager.Instance.getTipGoal())
+            if (GameManager.Instance.GetTip() < GameManager.Instance.GetTipGoal())
             {
                 StartCoroutine(HaloCoolDown());
             }
