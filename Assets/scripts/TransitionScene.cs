@@ -6,11 +6,16 @@ using UnityEngine.SceneManagement;
 public class TransitionScene : MonoBehaviour
 {
     public static TransitionScene Instance;
+    public GameObject fadeInAnimator;
+    public GameObject fadeOutAnimator;
 
     private void Start()
     {
         Debug.Log("START IS CALLED");
         LoadNextLevelFromTransition();
+        fadeInAnimator.SetActive(true); 
+        fadeOutAnimator.SetActive(false); 
+        
     }
     public void LoadNextLevelFromTransition()
     {
@@ -44,7 +49,9 @@ public class TransitionScene : MonoBehaviour
 
     private IEnumerator WaitAndLoadScene(string sceneName)
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2.5f);
+        fadeOutAnimator.SetActive(true); 
+        yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene(sceneName); // Load the target scene
     }
 
