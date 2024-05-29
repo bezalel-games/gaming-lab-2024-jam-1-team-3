@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Astronaut : MonoBehaviour
 {
-    private Rigidbody2D _rb;
-    private bool isStunned = false;
+    private bool isStunned;
     private float stunDuration = 2f; // Duration of stun in seconds
-    private float stunTimer = 0f;
+    private float stunTimer;
     [SerializeField] private GameObject movement;
     private Movement _movement;
     private SpriteRenderer astronautSpriteRenderer;
@@ -16,13 +15,11 @@ public class Astronaut : MonoBehaviour
 
      private void Awake()
     {
-        _rb = GetComponent<Rigidbody2D>();
         _movement = movement.GetComponent<Movement>();
         astronautSpriteRenderer = GetComponent<SpriteRenderer>();
         cameraShake = Camera.main.GetComponent<CameraShake>();
     }
-
-
+     
     private void Update()
     {
         if (isStunned)
@@ -72,6 +69,5 @@ public class Astronaut : MonoBehaviour
         astronautSpriteRenderer.color = originalColor; 
         spaceshipSpriteRenderer.color = originalColor; 
     }
-
 }
 

@@ -27,7 +27,6 @@ public class DeliveryPoint : MonoBehaviour
     
     //delivery time parameters
     [SerializeField] private GameObject _deliveryTimeGameObject;
-    private Image _deliveryTimeIndicator;
     private bool _inEvent;
     private float _initialPatience;
     public float _patience;
@@ -41,7 +40,6 @@ public class DeliveryPoint : MonoBehaviour
     private SpriteRenderer _haloSR;
     [SerializeField] private GameObject _transfer;
     private Animator _transferAnim;
-    private static readonly int Time1 = Animator.StringToHash("Time");
 
 
     private void Awake()
@@ -50,12 +48,10 @@ public class DeliveryPoint : MonoBehaviour
         _sr = GetComponent<SpriteRenderer>();
         _haloSR = _halo.GetComponent<SpriteRenderer>();
         _alienClass = _alien.GetComponent<Alien>();
-        _deliveryTimeIndicator = _deliveryTimeGameObject.GetComponent<Image>();
     }
 
     void Start()
     {
-        _transferAnim.SetFloat(Time1, _requiredTime);
         _initialPatience = GameManager.Instance._customerPatience;
         StartCoroutine(TimeBeforeAliensSpawn());
         _patience = _initialPatience;
@@ -139,7 +135,6 @@ public class DeliveryPoint : MonoBehaviour
             _transfer.SetActive(true);
             _isInside = true;
             _timeInside += Time.deltaTime;
-            //_deliveryTimeIndicator.fillAmount = _timeInside / _requiredTime;
             if (_timeInside >= _requiredTime && _isInside)
             {
                 _timeInside = 0;
@@ -152,7 +147,6 @@ public class DeliveryPoint : MonoBehaviour
         {
             _transfer.SetActive(false);
             _timeInside = 0;
-            _deliveryTimeIndicator.fillAmount = 0;
         }
     }
 
@@ -179,7 +173,7 @@ public class DeliveryPoint : MonoBehaviour
 
         if (isActiveAndEnabled)
         {
-            if (GameManager.Instance.GetTip() < GameManager.Instance.GetTipGoal())
+            if (GameManager.Instance.GetTip() < GameManager.Instance.GetTipGoal() && isActiveAndEnabled)
             {
                 StartCoroutine(HaloCoolDown());
             }
@@ -187,7 +181,6 @@ public class DeliveryPoint : MonoBehaviour
         _isInside = false;
         _timeInside = 0;
         _transfer.SetActive(false);
-        _deliveryTimeIndicator.fillAmount = _timeInside;
     }
 
     private IEnumerator HaloCoolDown()
