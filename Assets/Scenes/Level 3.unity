@@ -5130,6 +5130,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: StartAstronaut
       objectReference: {fileID: 0}
+    - target: {fileID: 1507462972839071257, guid: 91181b03c8413d642a9ebd54eb1a35e0, type: 3}
+      propertyPath: m_lineSpacing
+      value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507462972839071257, guid: 91181b03c8413d642a9ebd54eb1a35e0, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 4096
+      objectReference: {fileID: 0}
     - target: {fileID: 5455134563335736060, guid: 91181b03c8413d642a9ebd54eb1a35e0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.23666877
