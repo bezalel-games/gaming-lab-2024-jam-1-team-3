@@ -18,11 +18,6 @@ public class Meteors : MonoBehaviour
     private float minScale = 0.3f;
     private float maxScale = 0.8f;
     private float rotationSpeed;
-
-    private float minRotationSpeed = -90.0f;  // Minimum rotation speed (degrees per second)
-    private float maxRotationSpeed = 90.0f;
-
-
     public float startXMin;
     public float startXMax;
     public float startYMin;

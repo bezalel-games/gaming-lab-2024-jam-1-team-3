@@ -22,7 +22,7 @@ public class particle : MonoBehaviour
     {
         _movement = new Vector3(Random.Range(-1,1f), Random.Range(0,1f), 0);
         _movement = _movement.normalized * Random.Range(5f,6.5f);
-        _staticTarget = new Vector3(-8.6f, 4.45f, 0);
+        _staticTarget = new Vector3(-8.5f, 2f, 0);
     }
 
     void Update()
@@ -42,12 +42,12 @@ public class particle : MonoBehaviour
                 _target = null;
                 _movement = delta * 5f;
                 _coin.transform.DOScale(Vector3.zero, 0.2f);
-                // _trail.DOTime(0f, 0.2f).onComplete =
-                //     delegate()
-                //     {
-                //         _destroyed = true;
-                //         Destroy(gameObject);
-                //     };
+                _trail.DOTime(0f, 0.2f).onComplete =
+                    delegate()
+                    {
+                        _destroyed = true;
+                        Destroy(gameObject);
+                    };
                 _destroyed = true;
                 StartCoroutine(DestroyParticle());
             }

@@ -33,7 +33,7 @@ public class Tutorial : MonoBehaviour
         {
             TransitionToNextLevel();
         }
-        if (!_gotTip && _phase == 2 && GameManager.Instance.getTip() > 0)
+        if (!_gotTip && _phase == 2 && GameManager.Instance.GetTip() > 0)
         {
             _gotTip = true;
             StartCoroutine(GotTip());
