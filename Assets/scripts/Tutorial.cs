@@ -80,7 +80,7 @@ public class Tutorial : MonoBehaviour
     {
         yield return new WaitForSeconds(4.5f);
         _tutorialText.text = "";
-        string p = "To deliver pizzas, keep the <b>DELIVERY BOY</b> on the intended CUSTOMER";
+        string p = "To deliver pizzas, keep the DELIVERY BOY on the intended CUSTOMER";
         StartCoroutine(RollText(4, p));
     }
 
@@ -89,7 +89,7 @@ public class Tutorial : MonoBehaviour
         yield return new WaitForSeconds(2);
         _moon.SetActive(false);
         _tutorialText.text = "";
-        string p = "Great! faster delivery grants bigger <b>TIPS.</b> reach the TIP GOAL to advance";
+        string p = "Great! faster delivery grants bigger TIPS. reach the TIP GOAL to advance";
         StartCoroutine(RollText(4, p));
         yield return new WaitForSeconds(0.5f); //make arrow apear
         _arrow.SetActive(true);
@@ -101,7 +101,7 @@ public class Tutorial : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         _tutorialText.text = "";
-        string s = "Oh, I forgot to mention – these roads got some <b>ASTEROIDS!</b>";
+        string s = "Oh, I forgot to mention – these roads got some ASTEROIDS!";
         StartCoroutine(RollText(4, s));
         yield return new WaitForSeconds(2);
         _meteors.SetActive(true);
