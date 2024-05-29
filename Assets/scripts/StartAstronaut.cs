@@ -20,8 +20,8 @@ public class StartAstronaut : MonoBehaviour
 
     private void Start()
     {
-        fadeInAnimator.GetComponent<Animator>().enabled = true; 
-        fadeOutAnimator.GetComponent<Animator>().enabled = false;
+        fadeInAnimator.SetActive(true); 
+        fadeOutAnimator.SetActive(false);
         _startTime = GameManager.Instance._startTime;
         _startText.text = "Your tip goal for today is: " + GameManager.Instance.GetTipGoal() + "$. Also, we made your rope longer. Good luck!";
         StartCoroutine(DelayStartAnimation());
@@ -30,7 +30,7 @@ public class StartAstronaut : MonoBehaviour
     private IEnumerator DelayStartAnimation()
     {
         // Wait for 2 seconds before starting the animation
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
 
         // Now start the actual animation coroutine
         StartCoroutine(StartAnimation());
