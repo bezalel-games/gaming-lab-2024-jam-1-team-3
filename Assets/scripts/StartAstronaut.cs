@@ -8,6 +8,8 @@ public class StartAstronaut : MonoBehaviour
     [SerializeField] private float _startTime;
     private TextMeshProUGUI _startText;
     private GameObject _astronautStart;
+    public GameObject fadeInAnimator;
+    public GameObject fadeOutAnimator;
 
 
     void Awake()
@@ -18,8 +20,19 @@ public class StartAstronaut : MonoBehaviour
 
     private void Start()
     {
+        fadeInAnimator.GetComponent<Animator>().enabled = true; 
+        fadeOutAnimator.GetComponent<Animator>().enabled = false;
         _startTime = GameManager.Instance._startTime;
         _startText.text = "Your tip goal for today is: " + GameManager.Instance.GetTipGoal() + "$. Also, we made your rope longer. Good luck!";
+        StartCoroutine(DelayStartAnimation());
+    }
+
+    private IEnumerator DelayStartAnimation()
+    {
+        // Wait for 2 seconds before starting the animation
+        yield return new WaitForSeconds(2);
+
+        // Now start the actual animation coroutine
         StartCoroutine(StartAnimation());
     }
 

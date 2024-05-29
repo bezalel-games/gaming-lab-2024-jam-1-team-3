@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     
     //tip variables
+    public GameObject fadeOutAnimator;  
     [SerializeField] private float _tipFactor = 1;
     [SerializeField] private float _tipGoal = 20;
     private float _tip;
@@ -120,14 +121,26 @@ public class GameManager : MonoBehaviour
     public void TransitionToNextLevel()
     {
         Scene currentScene = SceneManager.GetActiveScene();
-        PlayerPrefs.SetString("LastScene", currentScene.name); // Save current scene name
-        PlayerPrefs.Save(); // Make sure to save PlayerPrefs changes
+        PlayerPrefs.SetString("LastScene", currentScene.name);
+        PlayerPrefs.Save();
         float time = _startTime - _levelTime;
-        SaveLevelTime(currentScene.name,time);
+        SaveLevelTime(currentScene.name, time);
 
-        // Load your transition scene or whatever comes next
+        // Trigger the fade out animation and load the transition scene when it's done
+        StartCoroutine(PlayFadeOutAndLoadTransition());
+    }
+
+    private IEnumerator PlayFadeOutAndLoadTransition()
+    {
+        fadeOutAnimator.GetComponent<Animator>().enabled = true; 
+
+        // Wait until the fade out animation is complete
+        yield return new WaitForSeconds(0.5f);  // Wait for 2 seconds, adjust based on your animation length
+
+        // After the animation completes, load the transition scene
         SceneManager.LoadScene("Transition");
     }
+
     public void SpawnLevelStartGame() 
     {
         //TODO add countdown or something
