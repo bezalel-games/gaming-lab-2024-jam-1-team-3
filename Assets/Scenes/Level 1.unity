@@ -2966,7 +2966,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _HorzFuzzOpt: 0.1
-    - _Intensity: 0.368
+    - _Intensity: 0.6
     - _MaxColorsBlue: 2
     - _MaxColorsGreen: 2
     - _MaxColorsRed: 2
