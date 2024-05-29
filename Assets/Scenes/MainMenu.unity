@@ -1040,8 +1040,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Quit
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 922ca68305bfa064ca7cb2e9d34090bf, type: 2}
-  m_sharedMaterial: {fileID: -4438556052189489692, guid: 922ca68305bfa064ca7cb2e9d34090bf, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b1924741675d54a6e91d6c384f0bc44b, type: 2}
+  m_sharedMaterial: {fileID: -8755253734911438791, guid: b1924741675d54a6e91d6c384f0bc44b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1065,17 +1065,17 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 26.35
+  m_fontSizeBase: 26.35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 17
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 4096
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: -8
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1174,8 +1174,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: PLAY GAME
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 922ca68305bfa064ca7cb2e9d34090bf, type: 2}
-  m_sharedMaterial: {fileID: -4438556052189489692, guid: 922ca68305bfa064ca7cb2e9d34090bf, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b1924741675d54a6e91d6c384f0bc44b, type: 2}
+  m_sharedMaterial: {fileID: -8755253734911438791, guid: b1924741675d54a6e91d6c384f0bc44b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1199,17 +1199,17 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 26.35
+  m_fontSizeBase: 26.35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 17
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 4096
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: -8
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0

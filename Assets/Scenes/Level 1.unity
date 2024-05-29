@@ -282,7 +282,7 @@ MonoBehaviour:
   _timer: {fileID: 1642731096}
   _tipGameObject: {fileID: 1854779515}
   _rope: {fileID: 776233774}
-  _startTime: 3
+  _startTime: 5
   _customerPatience: 12
 --- !u!114 &107277940
 MonoBehaviour:
@@ -319,6 +319,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcbd2e62a23f94ad9baddb0995e2e7b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _as: {fileID: 0}
+  _transfersound: {fileID: 0}
   _pizzaDeliveryFailed: {fileID: 0}
   _pizzaDeliverySuccess: {fileID: 0}
   _alienRequestsPizza: {fileID: 0}
@@ -327,7 +329,6 @@ MonoBehaviour:
   _looseSound: {fileID: 0}
   _meteorHit: {fileID: 0}
   _astroBossTalking: {fileID: 0}
-  _engineSounds: {fileID: 0}
   _buttonPress: {fileID: 0}
   _transitionLevel: {fileID: 0}
 --- !u!1 &138460582
@@ -435,6 +436,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 88.2
       objectReference: {fileID: 0}
+    - target: {fileID: 3465040395772707753, guid: 090409adbc34c4c46b27f30a1dbe882c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5141062993555549914, guid: 090409adbc34c4c46b27f30a1dbe882c, type: 3}
       propertyPath: m_fontSize
       value: 25
@@ -478,6 +483,30 @@ PrefabInstance:
     - target: {fileID: 6572214741893763965, guid: 090409adbc34c4c46b27f30a1dbe882c, type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 6843668372951915180, guid: 090409adbc34c4c46b27f30a1dbe882c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7945116138751467619, guid: 090409adbc34c4c46b27f30a1dbe882c, type: 3}
+      propertyPath: m_text
+      value: Paused
+      objectReference: {fileID: 0}
+    - target: {fileID: 7945116138751467619, guid: 090409adbc34c4c46b27f30a1dbe882c, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 922ca68305bfa064ca7cb2e9d34090bf, type: 2}
+    - target: {fileID: 7945116138751467619, guid: 090409adbc34c4c46b27f30a1dbe882c, type: 3}
+      propertyPath: m_fontStyle
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7945116138751467619, guid: 090409adbc34c4c46b27f30a1dbe882c, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4438556052189489692, guid: 922ca68305bfa064ca7cb2e9d34090bf, type: 2}
+    - target: {fileID: 7945116138751467619, guid: 090409adbc34c4c46b27f30a1dbe882c, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8614938031706079106, guid: 090409adbc34c4c46b27f30a1dbe882c, type: 3}
       propertyPath: m_Pivot.x
