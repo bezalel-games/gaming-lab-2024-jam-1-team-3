@@ -257,7 +257,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.12561539, y: -0.001068662}
+  m_ConnectedAnchor: {x: 0.12561539, y: -0.0010686867}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -699,7 +699,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.05359098, y: -0.00000011676615}
+  m_ConnectedAnchor: {x: 0.05359098, y: -0.00000010630059}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -934,7 +934,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.087085664, y: -0.00000016146349}
+  m_ConnectedAnchor: {x: 0.087085664, y: -0.00000014445689}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1290,7 +1290,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &423069833
 Animator:
   serializedVersion: 5
@@ -3333,7 +3333,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.07368787, y: -0.000000101437074}
+  m_ConnectedAnchor: {x: 0.07368787, y: -0.00000008704688}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -3753,7 +3753,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.10048347, y: -0.00000030104027}
+  m_ConnectedAnchor: {x: 0.10048347, y: -0.00000028141727}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -4103,7 +4103,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.06531416, y: -0.000000113887495}
+  m_ConnectedAnchor: {x: 0.06531416, y: -0.000000101132564}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -4579,7 +4579,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.080386825, y: -0.00000017049808}
+  m_ConnectedAnchor: {x: 0.080386825, y: -0.00000015479968}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -4947,6 +4947,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2011661280}
     - target: {fileID: 1953544453462410320, guid: c1f6270e1f7c75c4184e49f874084998, type: 3}
+      propertyPath: _levelTime
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953544453462410320, guid: c1f6270e1f7c75c4184e49f874084998, type: 3}
       propertyPath: _LevelObjects
       value: 
       objectReference: {fileID: 1057004316}
@@ -4957,7 +4961,7 @@ PrefabInstance:
     - target: {fileID: 1953544453462410320, guid: c1f6270e1f7c75c4184e49f874084998, type: 3}
       propertyPath: fadeOutAnimator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 423069832}
     - target: {fileID: 5214337246399033368, guid: c1f6270e1f7c75c4184e49f874084998, type: 3}
       propertyPath: MenuPanel
       value: 
@@ -5313,7 +5317,7 @@ PrefabInstance:
     - target: {fileID: 1101147083056393634, guid: 91181b03c8413d642a9ebd54eb1a35e0, type: 3}
       propertyPath: fadeOutAnimator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 423069832}
     - target: {fileID: 1216188932156196700, guid: 91181b03c8413d642a9ebd54eb1a35e0, type: 3}
       propertyPath: m_Name
       value: StartAstronaut

@@ -75,7 +75,8 @@ public class GameManager : MonoBehaviour
                 Scene currentScene = SceneManager.GetActiveScene();
                 PlayerPrefs.SetString("LastScene", currentScene.name); // Save current scene name
                 PlayerPrefs.Save();
-                SceneManager.LoadScene("GameOver");
+                StartCoroutine(PlayFadeOutAndLoadGameOver());
+                
             }
             if (_currentTime <= 10 && _tenSecondsFlag)
             {
@@ -83,6 +84,15 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(TenSecondsLeft());
             }
         }
+    }
+
+    private IEnumerator PlayFadeOutAndLoadGameOver()
+    {
+        fadeOutAnimator.SetActive(true);
+
+        // Wait until the fade out animation is complete
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene("GameOver");
     }
 
     private IEnumerator TenSecondsLeft()
@@ -132,10 +142,10 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator PlayFadeOutAndLoadTransition()
     {
-        fadeOutAnimator.GetComponent<Animator>().enabled = true; 
+        fadeOutAnimator.SetActive(true); 
 
         // Wait until the fade out animation is complete
-        yield return new WaitForSeconds(0.5f);  // Wait for 2 seconds, adjust based on your animation length
+        yield return new WaitForSeconds(0.5f); 
 
         // After the animation completes, load the transition scene
         SceneManager.LoadScene("Transition");
