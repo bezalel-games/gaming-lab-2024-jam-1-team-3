@@ -19,7 +19,7 @@ public class StartAstronaut : MonoBehaviour
     private void Start()
     {
         _startTime = GameManager.Instance._startTime;
-        _startText.text = "Your tip goal for today is: " + GameManager.Instance.GetTipGoal() + "$";
+        _startText.text = "Your tip goal for today is: " + GameManager.Instance.GetTipGoal() + "$. Also, we made your rope longer. Good luck!";
         StartCoroutine(StartAnimation());
     }
 

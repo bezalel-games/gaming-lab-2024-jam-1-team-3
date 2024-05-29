@@ -194,7 +194,7 @@ TrailRenderer:
   m_MinVertexDistance: 0.01
   m_MaskInteraction: 0
   m_Autodestruct: 0
-  m_Emitting: 1
+  m_Emitting: 0
   m_ApplyActiveColorSpace: 1
 --- !u!1 &7873953113367522893
 GameObject:
