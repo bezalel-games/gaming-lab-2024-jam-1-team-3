@@ -278,7 +278,7 @@ MonoBehaviour:
   _timer: {fileID: 1642731096}
   _tipGameObject: {fileID: 1854779515}
   _rope: {fileID: 776233774}
-  _startTime: 2
+  _startTime: 5
   _customerPatience: 8
 --- !u!114 &107277940
 MonoBehaviour:
@@ -433,6 +433,10 @@ PrefabInstance:
       propertyPath: m_RenderMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 675959564404944794, guid: 090409adbc34c4c46b27f30a1dbe882c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b08f0c59516c849e08e5d61672b285a8, type: 3}
     - target: {fileID: 675959564404944794, guid: 090409adbc34c4c46b27f30a1dbe882c, type: 3}
       propertyPath: m_Color.a
       value: 1
