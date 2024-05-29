@@ -274,6 +274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bca90dc9a70548649490d815b576813, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeOutAnimator: {fileID: 0}
   _tipFactor: 1
   _tipGoal: 30
   _levelTime: 90
@@ -304,8 +305,8 @@ MonoBehaviour:
   _10SecondsLeft: {fileID: 8300000, guid: a3f8cb075598915488c1f0c1d786448c, type: 3}
   _winSound: {fileID: 0}
   _looseSound: {fileID: 0}
-  _meteorHit: {fileID: 0}
-  _astroBossTalking: {fileID: 0}
+  _meteorHit: {fileID: 8300000, guid: 865db4ad390b2ff49958fe94026efcf2, type: 3}
+  _astroBossTalking: {fileID: 8300000, guid: 2adf4fc155733f849b52ed8a685e6147, type: 3}
   _buttonPress: {fileID: 0}
   _transitionLevel: {fileID: 0}
 --- !u!82 &107277941
@@ -5993,9 +5994,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1881037180}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.000000013893098, y: 0.000000105528535, z: -0.70710605, w: -0.7071075}
-  m_LocalPosition: {x: 2.67, y: -2.76, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.25, y: -6.63, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 652760872}
@@ -6879,11 +6880,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8920940068725367888, guid: 090409adbc34c4c46b27f30a1dbe882c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -867.2399
+      value: -681
       objectReference: {fileID: 0}
     - target: {fileID: 8920940068725367888, guid: 090409adbc34c4c46b27f30a1dbe882c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 126
+      value: 453
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
