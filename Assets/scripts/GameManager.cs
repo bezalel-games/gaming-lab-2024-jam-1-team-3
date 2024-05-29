@@ -71,6 +71,9 @@ public class GameManager : MonoBehaviour
                 Audio.AudioController.PlayCommand(Audio.AudioController._looseSound);
                 _currentTime = 0;
                 _levelInProgress = false;
+                Scene currentScene = SceneManager.GetActiveScene();
+                PlayerPrefs.SetString("LastScene", currentScene.name); // Save current scene name
+                PlayerPrefs.Save();
                 SceneManager.LoadScene("GameOver");
             }
             if (_currentTime <= 10 && _tenSecondsFlag)
