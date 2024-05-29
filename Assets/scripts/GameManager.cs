@@ -114,7 +114,6 @@ public class GameManager : MonoBehaviour
         {
             Audio.AudioController.PlayCommand(Audio.AudioController._winSound);
             _levelInProgress = false;
-            Debug.Log("YOU WIN!");
             TransitionToNextLevel();
         }
     }
@@ -123,6 +122,7 @@ public class GameManager : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         PlayerPrefs.SetString("LastScene", currentScene.name); // Save current scene name
         PlayerPrefs.Save(); // Make sure to save PlayerPrefs changes
+        SaveLevelTime(string currentScene.name, float _startTime - _timer);
 
         // Load your transition scene or whatever comes next
         SceneManager.LoadScene("Transition");
@@ -143,6 +143,14 @@ public class GameManager : MonoBehaviour
     {
         return _tip;
     }
+    
+    private void SaveLevelTime(string levelName, float timeTaken)
+    {
+        PlayerPrefs.SetFloat(levelName + "_Time", timeTaken);
+        PlayerPrefs.Save();
+    }
+    
+    
 }
 
 
