@@ -145,7 +145,7 @@ public class GameManager : MonoBehaviour
         fadeOutAnimator.SetActive(true); 
 
         // Wait until the fade out animation is complete
-        yield return new WaitForSeconds(0.5f); 
+        yield return new WaitForSeconds(1.5f); 
 
         // After the animation completes, load the transition scene
         SceneManager.LoadScene("Transition");
