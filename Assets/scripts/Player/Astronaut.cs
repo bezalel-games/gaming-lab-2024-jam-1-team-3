@@ -23,16 +23,16 @@ public class Astronaut : MonoBehaviour
     private void Update()
     {
         if (isStunned)
-                {
-                    stunTimer -= Time.deltaTime;
-                    if (stunTimer <= 0)
-                    {
-                        isStunned = false;
-                        astronautSpriteRenderer.color = Color.white; // Reset color to white
-                        spaceshipSpriteRenderer.color = Color.white; // Reset the color
-                    }
-                    return;
-                }
+        {
+            stunTimer -= Time.deltaTime;
+            if (stunTimer <= 0)
+            {
+                isStunned = false;
+                astronautSpriteRenderer.color = Color.white; // Reset color to white
+                spaceshipSpriteRenderer.color = Color.white; // Reset the color
+            }
+            return;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collider)

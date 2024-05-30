@@ -15,8 +15,6 @@ public class Audio : MonoBehaviour
     public AudioClip _looseSound;
     public AudioClip _meteorHit;
     public AudioClip _astroBossTalking;
-    public AudioClip _buttonPress;
-    public AudioClip _transitionLevel;
     
     private void Awake()
     {

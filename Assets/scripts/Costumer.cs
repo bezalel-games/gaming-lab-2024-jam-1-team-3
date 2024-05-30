@@ -36,8 +36,9 @@ public class Costumer : MonoBehaviour
     [SerializeField] private GameObject _transfer;
     [SerializeField] private SpriteRenderer _haloSR;
     [SerializeField] private GameObject _infaltingBubble;
+    private bool _transferSoundPlayed;
 
-    
+
     private void Awake()
     {
         _sr = GetComponent<SpriteRenderer>();
@@ -125,6 +126,7 @@ public class Costumer : MonoBehaviour
     {
         if (other.CompareTag("Pizza") & _inEvent & !Movement.isStunned)
         {
+            StartTransferSound();
             _haloSR.enabled = true;
             _overwriteThoguhtBubble = true;
             _alienClass.HideThoughtBubble(); //hide indicator bubbles when doing a delivery
@@ -139,6 +141,21 @@ public class Costumer : MonoBehaviour
                 _isInside = false;
             }
         }
+        if (Movement.isStunned)
+        {
+            //Audio.AudioController._as.Stop();
+            _transfer.SetActive(false);
+            _timeInside = 0;
+        }
+    }
+    
+    private void StartTransferSound()
+    {
+        if (!_transferSoundPlayed && !Movement.isStunned)
+        {
+            _transferSoundPlayed = true;
+            Audio.AudioController.PlayCommand(Audio.AudioController._transfersound);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -150,11 +167,12 @@ public class Costumer : MonoBehaviour
         
         if (isActiveAndEnabled)
         {
-            if (GameManager.Instance.GetTip() < GameManager.Instance.GetTipGoal())
+            if (GameManager.Instance.GetTip() < GameManager.Instance.GetTipGoal() && isActiveAndEnabled)
             {
                 StartCoroutine(HaloCoolDown());
             }
         }
+        _transferSoundPlayed = false;
         _isInside = false;
         _timeInside = 0;
         _transfer.SetActive(false);

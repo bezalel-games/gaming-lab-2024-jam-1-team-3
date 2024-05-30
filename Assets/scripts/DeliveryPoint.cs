@@ -148,7 +148,7 @@ public class DeliveryPoint : MonoBehaviour
         
         if (Movement.isStunned)
         {
-            Audio.AudioController._as.Stop();
+            //Audio.AudioController._as.Stop();
             _transfer.SetActive(false);
             _timeInside = 0;
         }

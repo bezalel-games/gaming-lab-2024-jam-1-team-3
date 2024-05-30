@@ -23,7 +23,7 @@ public class StartAstronaut : MonoBehaviour
         fadeInAnimator.SetActive(true); 
         fadeOutAnimator.SetActive(false);
         _startTime = GameManager.Instance._startTime;
-        _startText.text = "Your tip goal for today is: " + GameManager.Instance.GetTipGoal() + "$. Also, we made your rope longer. Good luck!";
+        _startText.text = "";
         StartCoroutine(DelayStartAnimation());
     }
 
@@ -39,6 +39,7 @@ public class StartAstronaut : MonoBehaviour
     
     private IEnumerator StartAnimation() 
     {
+        _startText.text = "Your tip goal for today is: " + GameManager.Instance.GetTipGoal() + "$. Also, we made your rope longer. Good luck!";
         StartCoroutine(RollText(_startTime/2,_startText.text ));
         yield return new WaitForSeconds(_startTime);
         _astronautStart.SetActive(false);

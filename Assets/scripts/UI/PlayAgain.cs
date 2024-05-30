@@ -10,7 +10,7 @@ public class PlayAgain : MonoBehaviour
         Time.timeScale = 1f;
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
-        Audio.AudioController.PlayCommand(Audio.AudioController._buttonPress);
+        //Audio.AudioController.PlayCommand(Audio.AudioController._buttonPress);
     }
 
     public void OnPlayLastSceneButtonClick()
@@ -19,7 +19,7 @@ public class PlayAgain : MonoBehaviour
         // Retrieve the last played scene name from PlayerPrefs
         string lastSceneName = PlayerPrefs.GetString("LastScene", "DefaultSceneName");
         SceneManager.LoadScene(lastSceneName);
-        Audio.AudioController.PlayCommand(Audio.AudioController._buttonPress);
+        //udio.AudioController.PlayCommand(Audio.AudioController._buttonPress);
     }
 
 }

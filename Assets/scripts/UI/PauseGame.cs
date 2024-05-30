@@ -13,7 +13,7 @@ public class PauseGame : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Audio.AudioController.PlayCommand(Audio.AudioController._buttonPress);
+            //Audio.AudioController.PlayCommand(Audio.AudioController._buttonPress);
             TogglePause();
         }
     }

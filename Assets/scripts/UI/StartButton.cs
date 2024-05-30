@@ -10,7 +10,7 @@ public class StartButton : MonoBehaviour
 
     public void OnPlayButtonClick()
     {
-        Audio.AudioController.PlayCommand(Audio.AudioController._buttonPress);
+        //Audio.AudioController.PlayCommand(Audio.AudioController._buttonPress);
         Time.timeScale = 1f;
         SceneManager.LoadScene("Tutorial");
     }
